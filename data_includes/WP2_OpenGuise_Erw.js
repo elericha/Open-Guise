@@ -1,5 +1,5 @@
 PennController.ResetPrefix(null);
-PennController.AddHost("https://amor.cms.hu-berlin.de/~idlsfbnd/openguise/");
+PennController.AddHost("https://amor.cms.hu-berlin.de/~elericha/reise/");
 
 PennController.Sequence("Info",
                         "Consent",
@@ -18,7 +18,7 @@ PennController.SetCounter("Counter","inc",1)
 
 //WILLKOMMENSSEITE & INFOBLATT
 PennController("Info",
-        newImage("HU","HU Logo.png")  
+        newImage("HU","logo-hu.png")  
             .size(289,65)
          ,
         newImage("UNam","UNam Logo.png")
