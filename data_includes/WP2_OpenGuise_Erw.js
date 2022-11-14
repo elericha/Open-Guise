@@ -179,7 +179,7 @@ PennController("Probedurchlauf",
         .once()
         .print()
     ,
-    newText("Probe2","<p><b>Probe für Durchgang 1:</b> Bitte Punkt auf der <b>Skala</b> anklicken. Bitte der Aufnahme eine Gesprächssituation zuordnen. Dazu Punkt auf der Skala auswählen. </p>")
+    newText("Probe2","<p><b>Probe für Durchgang 1:</b> Bitte Punkt auf der <b>Skala</b> anklicken. Bitte angeben, wie akzeptal der Satz ist. Dazu Punkt auf der Skala auswählen. </p>")
         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
         .settings.center()
         .print()
@@ -189,13 +189,15 @@ PennController("Probedurchlauf",
         .center()
         .print()
     ,
-    newScale("Probeskala1", 9)
+    newScale("Probeskala1", 7)
         .settings.css("font-family", "calibri").settings.css("font-size", "22px")
         .settings.labelsPosition("bottom").color("white")
-        .settings.before(newText("<b>Freund*in</b>"))
-        .settings.after(newText("<b>Lehrer*in</b>"))
+        .settings.before(newText("<b>sehr natürlich</b>"))
+        .settings.after(newText("<b>vollkommen unnatürlich</b>"))
+        .log ("all")
         .center()
         .print()
+        .wait()
     ,
     newText("Probe-8","<p><b>Probe für Durchgang 2: Bitte einen kurzen Text in das Textfeld schreiben.</b></p>")
         .center()
@@ -241,7 +243,7 @@ audio = ""
             .center()
             .once()
         ,
-    newImage("message","MessageOpenGuise.png")
+    newImage("iphone","iphone-Berge.jpg")
             .size(708,522)
         ,
     newCanvas("Message", 708,522 )
@@ -249,7 +251,7 @@ audio = ""
         .add( 150, 360, getAudio(audio))
     .print()
          ,
-        newText("Bewertung","<p><br>Bitte der Aufnahme eine Gesprächssituation zuordnen. Hat die Sprecherin mit einer <b>Freund*in</b> oder einer <b>Lehrer*in</b> gesprochen? Dazu Punkt auf der Skala auswählen. </p>")
+        newText("Bewertung","<p><br>Bitte den angehörten Satz bewerten.  <b>Wie akzeptal ist der Satz?</b>  Bitte auf der Skala einen Wert anklicken.  </p>")
           .settings.css("font-family", "calibri").settings.css("font-size", "18px")
            .center()
             .print()
@@ -259,11 +261,12 @@ audio = ""
         .center()
         .print()
       ,
-    newScale("Skala1", 9)
+      
+    newScale("Skala1", 7)
         .settings.css("font-family", "calibri").settings.css("font-size", "22px")
         .settings.labelsPosition("bottom").color("white")
-        .settings.before(newText("<b>Freund*in</b>"))
-        .settings.after(newText("<b>Lehrer*in</b>"))
+        .settings.before(newText("<b>sehr natürlich</b>"))
+        .settings.after(newText("<b>vollkommen unnatürlich</b>"))
         .center()
         ,
     newCanvas(600,50)
