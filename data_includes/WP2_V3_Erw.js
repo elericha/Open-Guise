@@ -198,20 +198,8 @@ PennController("Probedurchlauf",
         .center()
         .print()
         .wait()
-    ,
-    newText("Probe-8","<p><b>Probe für Durchgang 2: Bitte einen kurzen Text in das Textfeld schreiben.</b></p>")
-        .center()
-        .print()
-    ,
-    newCanvas("Probetextfeld5", 1, 10)
-        .center()
-        .print()
-    ,
-    newTextInput("Probetexteingabe5")
-        .center()
-        .print()
     ,        
-    newText("Probe-4", "<br>Sehr gut! Sobald ein Wert auf der Skala ausgewählt wurde und Text im Textfeld steht, erscheint ein Button am Ende der Seite, mit dem das Experiment gestartet wird.</p>")
+    newText("Probe-4", "<br>Sehr gut! Sobald ein Wert auf der Skala ausgewählt wurde, erscheint ein Button am Ende der Seite, mit dem das Experiment gestartet wird.</p>")
         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
         .settings.center()
         .print()
@@ -235,28 +223,27 @@ Template("OG-audios.csv", row =>
 ,
 audio = ""
 ,Template( row =>
-    PennController( "Item",
-        audio = audios.shift(), // Extract next entry from audios
-        audios2.push(audio)     // Place it in audios2
-        ,
-    newAudio( audio )
+    PennController("Durchlauf",
+
+
+    newAudio("Berge1", "Berge_Satz1.mp3" )
             .center()
             .once()
         ,
-    newImage("iphone","iphone-Berge.jpg")
-            .size(708,522)
+    newImage("iphone","iphone_Berge.jpg")
+            .size(400,487)
         ,
-    newCanvas("Message", 708,522 )
-        .add(   0, 0, getImage("message"))
-        .add( 150, 360, getAudio(audio))
-    .print()
-         ,
-        newText("Bewertung","<p><br>Bitte den angehörten Satz bewerten.  <b>Wie akzeptal ist der Satz?</b>  Bitte auf der Skala einen Wert anklicken.  </p>")
+    newCanvas ("Durchlauf", 600,550)
+        .add(   100, 0, getImage("iphone"))
+        .add( 150, 500, getAudio("Berge1"))
+        .print()
+    ,
+        newText("Bewertung","<p><br>Bitte den angehörten Satz bewerten.  <b>Wie natürlich ist der Satz?</b>  Bitte auf der Skala einen Wert anklicken.  </p>")
           .settings.css("font-family", "calibri").settings.css("font-size", "18px")
            .center()
             .print()
     ,
-    newCanvas(600,120)
+    newCanvas(550,120)
         .add(50, 0, getText("Bewertung"))
         .center()
         .print()
@@ -269,12 +256,13 @@ audio = ""
         .settings.after(newText("<b>vollkommen unnatürlich</b>"))
         .center()
         ,
-    newCanvas(600,50)
-        .add(150, 0, getScale("Skala1").settings.log("final"))
+   
+    newCanvas(570,60)
+        .add(90, 0, getScale("Skala1").settings.log("final"))
         .center()
         .print()
-    ,
-        newButton( "Weiter" )
+        ,
+    newButton( "Weiter" )
             .center()
             .print()
             .wait(getScale("Skala1").test.selected()
