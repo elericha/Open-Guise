@@ -21,16 +21,12 @@ PennController("Info",
         newImage("HU","logo-hu.png")  
             .size(289,65)
          ,
-        newImage("UNam","UNam Logo.png")
+        newImage("RUEG","dfg_rueg_header.jpg")
             .size(230,60)
-        ,
-         newImage("SFB","SFB Logo.png")
-            .size(280,86)
         ,
          newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
             .add(100,0, getImage("HU"))
-            .add(450,0, getImage("UNam"))
-            .add(750,0, getImage("SFB"))
+            .add(450,0, getImage("RUEG"))
             .center()
             .print()
         ,
@@ -49,19 +45,15 @@ newButton("Weiter_Alter","Ich bin über 18 Jahre.")
 //Mit Boxen zum Anklicken und Dateien zum herunterladen; angelehnt an C04
 
 PennController("Consent",
-     newImage("HU","HU Logo.png")
+     newImage("HU","logo-hu.png")
         .size(289,65)
     ,
-    newImage("UNam","UNam Logo.png")
+    newImage("RUEG","dfg_rueg_header.jpg")
          .size(230,60)
-    ,
-    newImage("SFB","SFB Logo.png")
-        .size(280,86)
     ,
     newCanvas("Logosnebeneinander",1138,100)
         .add(100,0, getImage("HU"))
         .add(450,0, getImage("UNam"))
-        .add(750,0, getImage("SFB"))
         .center()
         .print()
     ,
@@ -81,19 +73,15 @@ PennController("Consent",
 
 //CODE-EINGABE
 PennController("Code",
-    newImage("HU","HU Logo.png")
+    newImage("HU","logo-hu.png")
         .size(289,65)
     ,
-    newImage("UNam","UNam Logo.png")
+    newImage("UNam","dfg_rueg_header.jpg")
       .size(230,60)
-    ,
-    newImage("SFB","SFB Logo.png")
-        .size(280,86)
     ,
     newCanvas("Logosnebeneinander",1138,100)
         .add(100,0, getImage("HU"))
         .add(450,0, getImage("UNam"))
-        .add(750,0, getImage("SFB"))
         .center()
         .print()
     ,
@@ -209,29 +197,18 @@ PennController("Probedurchlauf",
             .print()
             .wait()
         )
-audios = []     // audios will reference the audios in a randomized order for simple playback
-,
-audios2 = []    // audios2 will ultimately be a copy of audios
-// Create dummy trials to browse the table and feed then shuffle audios
-,
-Template("OG-audios.csv", row =>
-    PennController( audios.push(row.Audio),
-    fisherYates(audios) )
-    )
 
-// Now create the Item trials reading the audio references from audios
-,
-audio = ""
-,Template( row =>
+Template("OG-audios.csv", row =>
     PennController("Durchlauf",
 
 
-    newAudio("Berge1", "Berge_Satz1.mp3" )
+    newAudio("Audio", row.Audio )
             .center()
             .once()
         ,
-    newImage("iphone","iphone_Berge.jpg")
+    newImage("Image",row.Image)
             .size(400,487)
+
         ,
     newCanvas ("Durchlauf", 600,550)
         .add(   100, 0, getImage("iphone"))
@@ -269,7 +246,7 @@ audio = ""
               .failure( newText('errorage', "<br>Bitte Punkt auf der Skala wählen.").color("red") .center().print() )
             )
     )
-    .log("audio", audio)    // Log which audio was played
+    .log("Audio", Audio)    // Log which audio was played
     )
     
 //Zwischenstopp zwischen Durchgang 1 und Durchgang 2
