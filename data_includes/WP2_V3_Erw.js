@@ -180,8 +180,8 @@ PennController("Probedurchlauf",
     newScale("Probeskala1", 7)
         .settings.css("font-family", "calibri").settings.css("font-size", "22px")
         .settings.labelsPosition("bottom").color("white")
-        .settings.before(newText("<b>sehr natürlich</b>"))
-        .settings.after(newText("<b>vollkommen unnatürlich</b>"))
+        .settings.before(newText("<b>sehr natürlich</b>&ensp;"))
+        .settings.after(newText("&ensp;<b>vollkommen unnatürlich</b>"))
         .log ("all")
         .center()
         .print()
@@ -198,60 +198,60 @@ PennController("Probedurchlauf",
             .wait()
         )
 
-Template("OG-audios.csv", row =>
-    PennController("Durchlauf",
-
-
-    newAudio("Audio", row.Audio )
-            .center()
-            .once()
-        ,
-    newImage("Image",row.Image)
-            .size(400,487)
-
-        ,
-    newCanvas ("Durchlauf", 600,550)
-        .add(   100, 0, getImage("iphone"))
-        .add( 150, 500, getAudio("Berge1"))
-        .print()
-    ,
-        newText("Bewertung","<p><br>Bitte den angehörten Satz bewerten.  <b>Wie natürlich ist der Satz?</b>  Bitte auf der Skala einen Wert anklicken.  </p>")
-          .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-           .center()
+Template("OG-audios.csv", row =>  //Hier beginnt das Template 
+        PennController("Durchlauf",
+    
+    
+        newAudio("Audio", row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
+                .center()
+                .once()
+            ,
+        newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
+                .size(400,600)
+    
+            ,
+        newCanvas ("Durchlauf", 600,700)
+            .add(   100, 0, getImage("Image"))
+            .add( 150, 620, getAudio("Audio"))
             .print()
-    ,
-    newCanvas(550,120)
-        .add(50, 0, getText("Bewertung"))
-        .center()
-        .print()
-      ,
-      
-    newScale("Skala1", 7)
-        .settings.css("font-family", "calibri").settings.css("font-size", "22px")
-        .settings.labelsPosition("bottom").color("white")
-        .settings.before(newText("<b>sehr natürlich</b>"))
-        .settings.after(newText("<b>vollkommen unnatürlich</b>"))
-        .center()
         ,
-   
-    newCanvas(570,60)
-        .add(90, 0, getScale("Skala1").settings.log("final"))
-        .center()
-        .print()
+            newText("Bewertung","<p><br>Bitte den angehörten Satz bewerten.  <b>Wie natürlich ist der Satz?</b>  Bitte auf der Skala einen Wert anklicken.  </p>")
+              .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+               .center()
+                .print()
         ,
-    newButton( "Weiter" )
+        newCanvas(550,120)
+            .add(0, 0, getText("Bewertung"))
             .center()
             .print()
-            .wait(getScale("Skala1").test.selected()
-              .failure( newText('errorage', "<br>Bitte Punkt auf der Skala wählen.").color("red") .center().print() )
-            )
-    )
-    .log("Audio", Audio)    // Log which audio was played
-    )
+          ,
+          
+        newScale("Skala1", 7)
+            .settings.css("font-family", "calibri").settings.css("font-size", "22px")
+            .settings.labelsPosition("bottom").color("white")
+            .settings.before(newText("<b>sehr natürlich</b>&ensp;"))
+            .settings.after(newText("&ensp;<b>vollkommen unnatürlich</b>"))
+            .center()
+            ,
+       
+        newCanvas(570,60)
+            .add(90, 0, getScale("Skala1").settings.log("all"))
+            .center()
+            .print()
+            ,
+        newButton( "Weiter" )
+                .center()
+                .print()
+                .wait(getScale("Skala1").test.selected()
+                  .failure( newText('errorage', "<br>Bitte Punkt auf der Skala wählen.").color("red") .center().print() )
+                )
+        )
+        .log("Audio", Audio)    // Log which audio was played
+        )
     
 //Zwischenstopp zwischen Durchgang 1 und Durchgang 2
 PennController("Zwischenstopp",
-    newText("Anleitung","Vielen Dank! Nun beginnt die zweite Phase des Experiments. In den nächsten Schritten werden die gleichen Aufnahmen erneut angehört und es soll die vorherige Einordnung der Nachrichten in eine Gesprächssituation begründet werden.<p>")
+    newText("Anleitung","Vielen Dank! In den nächsten Schritten fragen wir nach persönlichen Informationen, die uns bei der Auswertung der Studie helfen werden. <p>")
         .center()
         .print()
     ,
@@ -261,64 +261,20 @@ PennController("Zwischenstopp",
         .wait()
     )
 // Now create the ItemQ trials reading the audio references from audios2
-audio = ""
-,Template( row =>
-    PennController( "ItemQ",
-        audio = audios2.shift() // Extract next entry from audios2
-        ,
-        newAudio( audio )
-            .center()
-            .once()
-        ,
-    newImage("message","MessageOpenGuise.png")
-            .size(708,522)
-        ,
-    newCanvas("Message", 708,522 )
-        .add(   0, 0, getImage("message"))
-        .add( 150, 360, getAudio(audio))
-        .print()
-         ,
-    newHtml("ItemQText", "ItemQ.html")
-        .center()
-        .settings.css("font-size", "large")
-        .print()
-        ,
-    newTextInput("Begründung")
-        .center()
-        .log()
-    ,
-    newCanvas("Begründung",708,200)
-        .add(0,0,getTextInput("Begründung") .size(708,100) .lines(15))
-        .print()
-    ,
-    getTextInput("Begründung").settings.log("final")
-    ,
-    newButton( "Weiter" )
-        .center()
-        .print()
-        .wait(getTextInput("Begründung").test.text(/^.+/)
-             .failure( newText('errorage', "<br>Bitte Begründung angeben.").color("red") .center().print() )
-        )
-            
-            )
-    .log("audio", audio)
-)
+// 2. Durchlauf gelöscht 
+
  //Metadaten
     //Personenbezogene Daten Seite 1 - Alter, Geschlecht, Bildung, Sozialerstatus
 PennController("Meta1",
-    newImage("HU","HU Logo.png")  
+    newImage("HU","hu-logo.png")  
             .size(289,65)
          ,
-        newImage("UNam","UNam Logo.png")
+        newImage("RUEG","UNam Logo.png")
             .size(230,60)
-        ,
-         newImage("SFB","SFB Logo.png")
-            .size(280,86)
         ,
          newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
             .add(100,0, getImage("HU"))
             .add(450,0, getImage("UNam"))
-            .add(750,0, getImage("SFB"))
             .center()
             .print()
         ,
