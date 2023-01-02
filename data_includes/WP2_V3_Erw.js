@@ -7,9 +7,8 @@ PennController.Sequence("Info",
                         "Anleitung",
                         "Probedurchlauf",
                         "Counter",
-                        "Item",
+                        "Durchlauf",
                         "Zwischenstopp",
-                        "ItemQ",
                         "Meta1","Meta2", "send","Final");
 PennController.DebugOff();
 var progressBarText = "Fortschritt";
@@ -53,7 +52,7 @@ PennController("Consent",
     ,
     newCanvas("Logosnebeneinander",1138,100)
         .add(100,0, getImage("HU"))
-        .add(450,0, getImage("UNam"))
+        .add(450,0, getImage("RUEG"))
         .center()
         .print()
     ,
@@ -307,7 +306,7 @@ PennController("Meta1",
                .print()
                ,
                //Geschlecht
-               newText("sex", "Geschlecht:")
+               newText("sex", "Geschlechtsidentität:")
                .settings.css("font-size", "18px")
                .settings.bold()
                ,
@@ -339,7 +338,45 @@ PennController("Meta1",
                 newText("Leerzeile"," <br></p>")
                   .center()
                 .print()
-                 ,
+                ,
+                //seit welchem Alter
+                newText("Seit", "Wie alt waren Sie, als sie hier hingezogen sind?")
+                .settings.css("font-size", "18px")
+                .settings.bold()
+                ,
+                newTextInput("Seit")
+                 .log()
+                //.settings.size(200,40)
+                ,
+                newCanvas("Seit", 1000,40)
+                .settings.add(0,0, getText("Seit"))
+                .settings.add(450,4,getTextInput("Seit"))
+                //.settings.center()
+                .print()
+                ,
+                newText("Leerzeile"," <br></p>")
+                   .center()
+                 .print()
+                  ,
+                //Vorherige Wohnorte
+                newText("Vorher", "Haben Sie vorher an einem anderen Ort gewohnt?")
+                .settings.css("font-size", "18px")
+                .settings.bold()
+                ,
+                newTextInput("Vorher")
+                 .log()
+                //.settings.size(200,40)
+                ,
+                newCanvas("Vorher", 1000,40)
+                .settings.add(0,0, getText("Vorher"))
+                .settings.add(450,4,getTextInput("Vorher"))
+                //.settings.center()
+                .print()
+                ,
+                newText("Leerzeile"," <br></p>")
+                   .center()
+                 .print()
+                  ,
                  //aufgewachsen
             newText("aufgewachsen", "Wo sind Sie aufgewachsen?")
                .settings.css("font-size", "18px")
@@ -463,16 +500,12 @@ PennController("Meta2",
     newImage("HU","HU Logo.png")  
             .size(289,65)
          ,
-        newImage("UNam","UNam Logo.png")
+        newImage("RUEG","dfb-")
             .size(230,60)
-        ,
-         newImage("SFB","SFB Logo.png")
-            .size(280,86)
         ,
          newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
             .add(100,0, getImage("HU"))
-            .add(450,0, getImage("UNam"))
-            .add(750,0, getImage("SFB"))
+            .add(450,0, getImage("RUEG"))
             .center()
             .print()
         ,
@@ -620,6 +653,164 @@ newText("Leerzeile"," <br></p>")
 
  )
 )
+//Feedback-Fragebogen 
+PennController("Feedback",
+    newImage("HU","HU Logo.png")  
+            .size(289,65)
+         ,
+        newImage("RUEG","dfg_rueg_header.jpg")
+            .size(230,60)
+        ,
+         newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
+            .add(100,0, getImage("HU"))
+            .add(450,0, getImage("RUEG"))
+            .center()
+            .print()
+        ,
+
+       newText("getestet","<b>Was denken Sie, was wir in diesem Online-Experiment untersuchen wollen?</b><br>Es gibt keine falschen Antworten. Geben Sie gerne ein Stichwort an.")
+ //       .center()
+        .print()
+,
+    newCanvas("getestet", 1, 10)
+        .center()
+        .print()
+,
+    newTextInput("getestet")
+ //       .center()
+        .size(600,80)
+        .print()
+,
+    getTextInput("getestet")
+        .log("final")
+,
+newText("Leerzeile1"," <br></p>")
+    .center()
+    .print()
+,
+    newText("Technik","<b>Gab es technische Schwierigkeiten beim Ablauf des Experiments?</b><br> Bitte kurz beschreiben.")
+  //      .center()
+        .print()
+,
+    newCanvas("Technik", 1, 10)
+//        .center()
+        .print()
+,
+    newTextInput("Technik")
+//        .center()
+        .size(600,80)
+        .print()
+,
+    getTextInput("Technik")
+        .log("final")
+               ,
+               newText("Leerzeile2"," <br></p>")
+                 .center()
+                .print()
+                 ,
+       newText("Sätze","<b>Ist dir etwas an den angehörten Sätzen aufgefallen?</b><br> Irgendeine Art von Auffälligkeit.")
+ //       .center()
+        .print()
+,
+    newCanvas("Sätze", 1, 10)
+ //       .center()
+        .print()
+,
+    newTextInput("Sätze")
+  //      .center()
+        .size(600,80)
+        .print()
+,
+    getTextInput("Sätze")
+        .log("final")
+    ,
+ newText("Leerzeile3"," <br></p>")
+                 .center()
+                .print()
+                 ,
+
+ newText("Setting","<b>Wie natürlich empfanden Sie das Setting der Studie?</b><br> Konnten Sie sich die Gesprächssituation gut vorstellen?")
+//        .center()
+        .print()
+,
+    newCanvas("Setting", 1, 10)
+ //       .center()
+        .print()
+,
+
+    newTextInput("Setting")
+ //       .center()
+ .size(600,80)
+        .print()
+,
+    getTextInput("Setting")
+        .log("final")
+,
+newText("Leerzeile4"," <br></p>")
+                 .center()
+                .print()
+                 ,
+newText("Sonstiges","<b>Ist Ihnen noch etwas aufgefallen?</b><b> Jedes Feedback ist hilfreich.")
+//        .center()
+        .print()
+,
+    newCanvas("Sonstiges", 1, 10)
+ //       .center()
+        .print()
+,
+
+    newTextInput("Sonstiges")
+ //       .center()
+        .size(600,80)
+        .print()
+,
+    getTextInput("Sonstiges")
+        .log("final")
+,
+newText("Leerzeile5"," <br></p>")
+                 .center()
+                .print()
+                 ,
+    newButton("Ende", "Experiment beenden und Daten abschicken")
+               .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+               //.settings.center()
+               .log()
+               .center()
+               .print()
+               .wait(
+            newFunction('dummy', ()=>true).test.is(true)
+                .and(
+             getTextInput("getestet").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("errormutter","<br>Bitte ein Stichwort angeben")
+                   .settings.color("red")
+                   .center()
+                   .print())
+                ).and(
+             getTextInput("Technik").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("errorvater","<br>Wenn alles gut funktioniert hat, bitte &quot;gut&quot;eingeben.")
+                   .settings.color("red")
+                   .center()
+                   .print())
+             ).and(
+             getTextInput("Sätze").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("errorselbst","<br>Bei keinen Auffälligkeiten bitte &quot;keine&quot; angeben.")
+                   .settings.color("red")
+                   .center()
+                   .print())
+            ).and(
+             getTextInput("Sonstiges").test.text(/^.+/) // testing if at least one digit was written in the input box
+                .failure(
+                   newText("errordialekt","<br>Für kein weiteres Feedback bitte &quot;keine&quot; schreiben.")
+                   .settings.color("red")
+                   .center()
+                   .print())
+            )  
+
+ )
+ )
 ;
 //Geloggte Ergebnisse senden
 PennController.SendResults("send");
