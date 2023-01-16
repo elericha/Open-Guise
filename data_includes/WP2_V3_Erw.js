@@ -390,8 +390,6 @@ PennController ("Probedurchlauf2",
         
         );
 
-        PennController.ResetPrefix(null);
-        PennController.AddHost("https://amor.cms.hu-berlin.de/~elericha/reise/");
         
         // Now create the Item trials reading the audio references from audios
         
@@ -430,7 +428,8 @@ PennController ("Probedurchlauf2",
                     .wait()
                 
                 )
-        Template ("OGaudios.csv", row =>
+        
+    Template ("OG-audios.csv", row =>
         
         PennController ("Studie",
         
