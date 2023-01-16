@@ -1,51 +1,51 @@
-Group,item,Audio,Image
-A,1,17_Berge1_ja.wav,Bild1-Berge.png
-A,2,4_Berge2_ka.wav,Bild1-Berge.png
-A,3,24_Berge3_ja.wav,Bild1-Berge.png
-A,4,25_Berge4_ka.wav,Bild1-Berge.png
-A,5,16_Berge5_ja.wav,Bild1-Berge.png
-A,6,17_Zelten1_ja.wav,Bild2-Zelten.png
-A,7,5_Zelten2_ja.wav,Bild2-Zelten.png
-A,8,9_Zelten3_ja.wav,Bild2-Zelten.png
-A,9,21_Zelten4_ja.wav,Bild2-Zelten.png
-A,10,15_Zelten5_ja.wav,Bild2-Zelten.png
-A,11,Audios4_Museum1_21_ja.wav,Bild4-Museum.png
-A,12,Audios4_Museum2_6_ja.wav,Bild4-Museum.png
-A,13,Audios4_Museum3_23.wav,Bild4-Museum.png
-A,14,29_Museum4_ja.wav,Bild4-Museum.png
-A,15,Audios4_Museum5_17_ja,Bild4-Museum.png
-A,16,27_Hotel1_ja.wav,Bild5-Hotel.png
-A,17,10_Hotel2_ja.wav,Bild5-Hotel.png
-A,18,29_Hotel3_ja.wav,Bild5-Hotel.png
-A,19,30_Hotel4_ja.wav,Bild5-Hotel.png
-A,20,31_Hotel5_ja.wav,Bild5-Hotel.png
-A,21,24_Mozart1_ja.wav,Bild6-Mozart.png
-A,22,5_Mozart2_ja.wav,Bild6-Mozart.png
-A,23,26_Mozart3_ja.wav,Bild6-Mozart.png
-A,24,15_Mozart4_ka.wav,Bild6-Mozart.png
-A,28_Mozart5_j.wav,Bild6-Mozart.png
-B,1,17_Berge1_ja.wav,Bild1-Berge.png
-B,2,4_Berge2_ka.wav,Bild1-Berge.png
-B,3,24_Berge3_ja.wav,Bild1-Berge.png
-B,4,17_Berge4_pause.wav,Bild1-Berge.png
-B,5,16_Berge5_ja.wav,Bild1-Berge.png
-B,6,17_Zelten1_ja.wav,Bild2-Zelten.png
-B,7,5_Zelten2_ja.wav,Bild2-Zelten.png
-B,8,9_Zelten3_ja.wav,Bild2-Zelten.png
-B,9,10_Zelten4_Pause.wav,Bild2-Zelten.png
-B,10,15_Zelten5_ja.wav,Bild2-Zelten.png
-B,11,Audios4_Museum1_21_ja.wav,Bild4-Museum.png
-B,12,Audios4_Museum2_6_ja.wav,Bild4-Museum.png
-B,13,Audios4_Museum3_23.wav,Bild4-Museum.png
-B,14,6_Museum4_Pause.wav,Bild4-Museum.png
-B,15,Audios4_Museum5_17_ja,Bild4-Museum.png
-B,16,27_Hotel1_ja.wav,Bild5-Hotel.png
-B,17,10_Hotel2_ja.wav,Bild5-Hotel.png
-B,18,29_Hotel3_ja.wav,Bild5-Hotel.png
-B,19,8_Hotel4_Pause.wav,Bild5-Hotel.png
-B,20,31_Hotel5_ja.wav,Bild5-Hotel.png
-B,21,24_Mozart1_ja.wav,Bild6-Mozart.png
-B,22,5_Mozart2_ja.wav,Bild6-Mozart.png
-B,23,26_Mozart3_ja.wav,Bild6-Mozart.png
-B,24,11_Mozart4_Pause.wav,Bild6-Mozart.png
-B,28_Mozart5_j.wav,Bild6-Mozart.png
+Group,item,Audio,Image,Anzahl
+A,1,17_Berge1_ja.wav,Bild1-Berge.jpg,1 von 25
+A,2,4_Berge2_ka.wav,Bild1-Berge.jpg,2 von 25
+A,3,24_Berge3_ja.wav,Bild1-Berge.jpg,3 von 25
+A,4,25_Berge4_ka.wav,Bild1-Berge.jpg,4 von 25
+A,5,16_Berge5_ja.wav,Bild1-Berge.jpg,5 von 25
+A,6,17_Zelten1_ja.wav,Bild2-Zelten.jpg, 6 von 25
+A,7,5_Zelten2_ja.wav,Bild2-Zelten.jpg,7 von 25 
+A,8,9_Zelten3_ja.wav,Bild2-Zelten.jpg,8 von 25
+A,9,21_Zelten4_ja.wav,Bild2-Zelten.jpg,9 von 25
+A,10,15_Zelten5_ja.wav,Bild2-Zelten.jpg,10 von 25
+A,11,Audios4_Museum1_21_ja.wav,Bild4-Museum.jpg,11 von 25
+A,12,Audios4_Museum2_6_ja.wav,Bild4-Museum.jpg,12 von 25
+A,13,Audios4_Museum3_23.wav,Bild4-Museum.jpg,13 von 25
+A,14,29_Museum4_ja.wav,Bild4-Museum.jpg, 14 von 25
+A,15,Audios4_Museum5_17_ja,Bild4-Museum.jpg,15 von 25
+A,16,27_Hotel1_ja.wav,Bild5-Hotel.jpg,16 von 25
+A,17,10_Hotel2_ja.wav,Bild5-Hotel.jpg,17 von 25
+A,18,29_Hotel3_ja.wav,Bild5-Hotel.jpg,18 von 25
+A,19,30_Hotel4_ja.wav,Bild5-Hotel.jpg,19 von 25
+A,20,31_Hotel5_ja.wav,Bild5-Hotel.jpg,20 von 25
+A,21,24_Mozart1_ja.wav,Bild6-Mozart.jpg,21 von 25
+A,22,5_Mozart2_ja.wav,Bild6-Mozart.jpg,22 von 25
+A,23,26_Mozart3_ja.wav,Bild6-Mozart.jpg,23 von 25
+A,24,15_Mozart4_ka.wav,Bild6-Mozart.jpg,24 von 25
+A,28_Mozart5_j.wav,Bild6-Mozart.jpg,25 von 25
+B,1,17_Berge1_ja.wav,Bild1-Berge.jpg,1 von 25
+B,2,4_Berge2_ka.wav,Bild1-Berge.jpg,2 von 25
+B,3,24_Berge3_ja.wav,Bild1-Berge.jpg,3 von 25
+B,4,17_Berge4_pause.wav,Bild1-Berge.jpg,4 von 25
+B,5,16_Berge5_ja.wav,Bild1-Berge.jpg,5 von 25
+B,6,17_Zelten1_ja.wav,Bild2-Zelten.jpg,6 von 25
+B,7,5_Zelten2_ja.wav,Bild2-Zelten.jpg,7 von 25
+B,8,9_Zelten3_ja.wav,Bild2-Zelten.jpg,8 von 25
+B,9,10_Zelten4_Pause.wav,Bild2-Zelten.jpg,9 von 25
+B,10,15_Zelten5_ja.wav,Bild2-Zelten.jpg,10 von 25
+B,11,Audios4_Museum1_21_ja.wav,Bild4-Museum.jpg,11 von 25
+B,12,Audios4_Museum2_6_ja.wav,Bild4-Museum.jpg,12 von 25
+B,13,Audios4_Museum3_23.wav,Bild4-Museum.jpg,13 von 25
+B,14,6_Museum_4_Pause.wav,Bild4-Museum.jpg,14 von 25
+B,15,Audios4_Museum5_17_ja.wav,Bild4-Museum.jpg,15 von 25
+B,16,27_Hotel1_ja.wav,Bild5-Hotel.jpg,16 von 25
+B,17,10_Hotel2_ja.wav,Bild5-Hotel.jpg,17 von 25
+B,18,29_Hotel3_ja.wav,Bild5-Hotel.jpg,18 von 25
+B,19,8_Hotel4_Pause.wav,Bild5-Hotel.jpg,19 von 25
+B,20,31_Hotel5_ja.wav,Bild5-Hotel.jpg,20 von 25
+B,21,24_Mozart1_ja.wav,Bild6-Mozart.jpg,21 von 25
+B,22,5_Mozart2_ja.wav,Bild6-Mozart.jpg,22 von 25
+B,23,26_Mozart3_ja.wav,Bild6-Mozart.jpg,23 von 25
+B,24,11_Mozart4_Pause.wav,Bild6-Mozart.jpg,24 von 25
+B,25,28_Mozart5_j.wav,Bild6-Mozart.jpg,25 von 25

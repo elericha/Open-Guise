@@ -16,25 +16,34 @@ var progressBarText = "Fortschritt";
 PennController.SetCounter("Counter","inc",1)
 
 //WILLKOMMENSSEITE & INFOBLATT
+
 PennController("Info",
-        newImage("HU","logo-hu.png")  
-            .size(289,65)
+        newImage("HU","HU-Logo.jpeg")  
+            .size(140,140)
          ,
         newImage("RUEG","dfg_rueg_header.jpg")
-            .size(230,60)
+            .size(392,120)
+        ,newImage ("DFG", "DFG-logo.jpeg")
+            .size (212,120)
         ,
-         newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
-            .add(100,0, getImage("HU"))
-            .add(450,0, getImage("RUEG"))
+         newCanvas("Logosnebeneinander",1138,140) //bildet den Header mit Logos
+            .add(210,0, getImage("HU"))
+            .add(370,15, getImage("RUEG"))
+            .add(750,15, getImage("DFG"))
             .center()
             .print()
-        ,
+            ,   
+        newText("Leerzeile"," <br></p>")
+        .center()
+        .print()
+,
         newHtml("willkommen", "information.html") //htmls müssen unter resources gepeichert werden
             .center()
             .settings.css("font-size", "large")
             .print()
 ,
-newButton("Weiter_Alter","Ich bin über 18 Jahre.")
+newButton("Weiter","Weiter")
+    .settings.css ("font-size", "18px")
     .center()
     .print()
     .wait()
@@ -44,58 +53,79 @@ newButton("Weiter_Alter","Ich bin über 18 Jahre.")
 //Mit Boxen zum Anklicken und Dateien zum herunterladen; angelehnt an C04
 
 PennController("Consent",
-     newImage("HU","logo-hu.png")
-        .size(289,65)
-    ,
-    newImage("RUEG","dfg_rueg_header.jpg")
-         .size(230,60)
-    ,
-    newCanvas("Logosnebeneinander",1138,100)
-        .add(100,0, getImage("HU"))
-        .add(450,0, getImage("RUEG"))
+   newImage("HU","HU-Logo.jpeg")  
+            .size(140,140)
+         ,
+        newImage("RUEG","dfg_rueg_header.jpg")
+            .size(392,120)
+        ,newImage ("DFG", "DFG-logo.jpeg")
+            .size (212,120)
+        ,
+         newCanvas("Logosnebeneinander",1138,140) //bildet den Header mit Logos
+            .add(210,0, getImage("HU"))
+            .add(370,15, getImage("RUEG"))
+            .add(750,15, getImage("DFG"))
+            .center()
+            .print()
+            ,   
+        newText("Leerzeile"," <br></p>")
         .center()
         .print()
-    ,
+,
     newHtml("Consent", "consent.html")
         .center()
         .settings.css("font-size", "large")
         .print()
     ,
+       newText("Leerzeile2"," <br></p>")
+        .center()
+        .print()
+        ,
     newButton("Weiter","Weiter")
+        .settings.css ("font-size", "18px")
          .print()
          .log()
          .wait(
              getHtml("Consent").test.complete() //testet ob alle Boxen im Htmldokument angeklickt wurden
-            .failure(getHtml("Consent").warn()) //gibt einen warntext aus falls nicht
+            .failure(newText ("errorconsent", "Damit es weitergeht, müssen beide Boxen angeklickt werden.")
+            .settings.color("red")
+            .settings.css ("font-size", "18px")
+                   .center()
+                   .print()) //gibt einen warntext aus falls nicht
              )
 )
 
 //CODE-EINGABE
 PennController("Code",
-    newImage("HU","logo-hu.png")
-        .size(289,65)
-    ,
-    newImage("UNam","dfg_rueg_header.jpg")
-      .size(230,60)
-    ,
-    newCanvas("Logosnebeneinander",1138,100)
-        .add(100,0, getImage("HU"))
-        .add(450,0, getImage("UNam"))
+     newImage("HU","HU-Logo.jpeg")  
+            .size(140,140)
+         ,
+        newImage("RUEG","dfg_rueg_header.jpg")
+            .size(392,120)
+        ,newImage ("DFG", "DFG-logo.jpeg")
+            .size (212,120)
+        ,
+         newCanvas("Logosnebeneinander",1138,140) //bildet den Header mit Logos
+            .add(210,0, getImage("HU"))
+            .add(370,15, getImage("RUEG"))
+            .add(750,15, getImage("DFG"))
+            .center()
+            .print()
+            ,   
+        newText("Leerzeile"," <br></p>")
         .center()
         .print()
-    ,
+,
     newHtml("Code", "code.html")
         .center()
         .settings.css("font-size", "large")
         .print()
-    ,
-    newCanvas("Code-Textfeld", 1, 10)
-        .center()
-        .print()
-    ,
+  ,
     newTextInput("Texteingabe-Code")
+        .settings.size(200,30)
         .center()
         .print()
+        
     ,
     newText("Leerzeile"," <br></p>")
         .center()
@@ -105,162 +135,371 @@ PennController("Code",
             .log("final")
     ,
     newButton("weiter","zur Anleitung")
+    .settings.css ("font-Size", "18px")
         .center()
         .print()
         .wait(
             getTextInput("Texteingabe-Code").test.text(/^.+/)
-                    .failure( newText('errorcode', "<br>Bitte gib den Code ein.").color("red") .center().print() )
+                    .failure( newText('errorcode', "<br>Bitte gib Deinen Code ein.").color("red") .center().print() )
             )
     ,
     newText("Leerzeile"," <br></p>")
         .center()
         .print()
-)
- 
-//Anleitung
-PennController("Anleitung",
-    newHtml("Anleitung","anleitung.html")
-        .settings.css("font-family", "calibri") .settings.css("font-size", "large")
-        .center()
-        .print()
-    ,
-    newButton("buttonErklärung", "Weiter zum Erklärbild")
-        .settings.css("font-family", "calibri").settings.css("font-size", "12px")
-        .settings.center()
-        .print()
-        .wait()
-    , 
-//Entfernt das vorherige Html-Dokument und den Button
-    getHtml("Anleitung")
-         .remove()
-    ,
-    getButton("buttonErklärung") 
-         .remove()
-    ,
-    newText("Anleitung2", "So sieht das Experiment nachher aus. Als nächstes folgt eine Probe des Experiments.")
-        .settings.css("font-family", "calibri").settings.css("font-size", "16px")
-        .settings.center()
-        .print()
-    ,
-    newImage("openguiseanleitung", "OpenGuiseAnleitung.png")
-        .settings.center()
-        .print()
-    ,
-    newButton("buttonProbe", "Weiter")
-        .settings.css("font-family", "calibri").settings.css("font-size", "12px")
-        .settings.center()
-        .print()
-        .wait()
-        )
+);
     
-//TEsten von Skala und Eingabefeld
-//Zwischenstopp zwischen Durchgang 1 und Durchgang 2
-PennController("Probedurchlauf",
-    newText("Probe1", "<p>Bitte einmal auf <b>Play</b> klicken.</p>")
-        .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-        .settings.center()
-        .print()
-    ,
-    newAudio("Probe","Audio1.wav")
-        .center()
-        .once()
-        .print()
-    ,
-    newText("Probe2","<p><b>Probe für Durchgang 1:</b> Bitte Punkt auf der <b>Skala</b> anklicken. Bitte angeben, wie akzeptal der Satz ist. Dazu Punkt auf der Skala auswählen. </p>")
-        .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-        .settings.center()
-        .print()
-    ,
-    newCanvas(600,120)
-        .add(80, 0, getText("Probe2"))
-        .center()
-        .print()
-    ,
-    newScale("Probeskala1", 7)
-        .settings.css("font-family", "calibri").settings.css("font-size", "22px")
-        .settings.labelsPosition("bottom").color("white")
-        .settings.before(newText("<b>sehr natürlich</b>&ensp;"))
-        .settings.after(newText("&ensp;<b>vollkommen unnatürlich</b>"))
-        .log ("all")
-        .center()
-        .print()
-        .wait()
-    ,        
-    newText("Probe-4", "<br>Sehr gut! Sobald ein Wert auf der Skala ausgewählt wurde, erscheint ein Button am Ende der Seite, mit dem das Experiment gestartet wird.</p>")
-        .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-        .settings.center()
-        .print()
-    ,       
-    newButton("Weiter", "Bitte weiter klicken. Das Experiment startet.")
+//Anleitung und Probedurchlauf 
+
+//Einleitung nur als kurzer Text
+PennController ("StartProbe",
+
+            newText("StartProbe","<p align=center><br>Im Folgenden stellen wir dir eine Situation vor. Du wirst ein <b>Bild sehen</b> und eine kurze <b>Beschreibung der Situation lesen.</b> </br> <br> Danach wirst du <b>weitere Bilder sehen </b> und <b>Sätze anhören.</b> </br> <br>Die Aufgabe in den nächsten Minuten besteht darin, diese <b> Sätze zu bewerten.</b> Dazu kannst du eine <b>Skala anklicken.</b></br> </p>")
+              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+               .center()
+        ,
+        newCanvas(620,200)
+            .add(20, 0, getText("StartProbe"))
             .center()
             .print()
+          ,
+            newText("Leerzeile"," <br></p>")
+                   .center()
+                 .print()
+                  
+     ,
+        newButton("Weiter", "Weiter")
+         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .center()
+            .print()
             .wait()
-        )
+        
+        );
+// Einleitung der Gesprächssituation mit Bild 
+PennController ("Einleitung",
 
-Template("OG-audios.csv", row =>  //Hier beginnt das Template 
-        PennController("Durchlauf",
+    newText ("Heading-Einleitung",  "<p><b>Gesprächssituation</b></p>")
+    .settings.css ("font-size", "22px")
+    .center()
+    .print()
+    ,
+
+        newImage("Einleitung","Einleitung_Freundinnen-web.jpg") 
+                .size(600,400)
+                .center()
+                .print()
+                
+        ,
+            newText("Einleitung","<p align=center><br>Zwei Freundinnen sitzen gemeinsam in einem Café und unterhalten sich.</br> <br> Die eine war gerade im Urlaub und erzählt, was sie dort erlebt hat.</br> <br> Sie zeigt der Freundin Fotos vom Urlaub auf ihrem Handy.</br> </p>")
+              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+               .center()
+        ,
+        newCanvas(620,180)
+            .add(20, 0, getText("Einleitung"))
+            .center()
+            .print()
+          ,
+            newText("Leerzeile"," <br></p>")
+                   .center()
+                 .print()
+                  
+     ,
+        newButton("Weiter", "Weiter")
+         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .center()
+            .print()
+            .wait()
+        
+        )
+// Beispiel Urlaubsbild (ohne Audio)
+PennController ("Beispiel",
     
-    
-        newAudio("Audio", row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
+    newImage ("Kuh", "Bild2-Kuh.jpg")
+    .size (400,600)
+    .center()
+    .print()
+    ,
+            newText("Beispiel","<p align=center> <br> Hier siehst du die Bilder, die sie gemacht hat. Gleich hörst du dazu einige Sätze der Unterhaltung. </br> <br> Deine Aufgabe besteht darin, diese Sätze zu bewerten.</br> <br> Zu jedem Bild werden mehrere Sätze abgespielt. Nach jedem Satz wollen wir wissen:</br> <br> <b>Wie natürlich empfindest Du den Satz? </b> </br><br>Jetzt gibt es einen Probedurchlauf mit den Audiodateien. </br></p>")
+              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+               .center()
+        ,
+        newCanvas(620,300)
+            .add(20, 0, getText("Beispiel"))
+            .center()
+            .print()
+          ,
+    newText("LeerzeileB"," <br></p>")
+        .center()
+        .print()
+                  
+     ,
+    newButton("Weiter", "Weiter")
+         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .center()
+            .print()
+            .wait()
+        
+        );
+//Probedurchlauf Kuh
+PennController ("Probedurchlauf",
+        newAudio("KuhAudio", "21_Kuh1_ja.wav" ) //hier sind die Audios pro Seite einzeln eingefügt
                 .center()
                 .once()
             ,
-        newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
+        newImage("Kuhbild","Bild2-Kuh.jpg") //auch die Bilder müssen einzeln benannt und im Code erwähnt sein
+                .center()
                 .size(400,600)
     
             ,
-        newCanvas ("Durchlauf", 600,700)
-            .add(   100, 0, getImage("Image"))
-            .add( 150, 620, getAudio("Audio"))
+        newCanvas ("Durchlauf", 600,650)
+            .add(   100, 0, getImage("Kuhbild"))
+            .add( 150, 620, getAudio("KuhAudio"))
             .print()
         ,
-            newText("Bewertung","<p><br>Bitte den angehörten Satz bewerten.  <b>Wie natürlich ist der Satz?</b>  Bitte auf der Skala einen Wert anklicken.  </p>")
-              .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+            newText("Bewertung","<p><br>1. Klicke auf den Play-Button, um die Audiodatei anzuhören. </br> <br>2. Bitte den angehörten Satz bewerten. Wie natürlich empfindest du den Satz?</b>  Bitte auf der Skala einen Wert anklicken.</br> <br>3. Sobald ein Wert auf der Skala ausgewählt wurde, erscheint ein Button am Ende der Seite. </br> </p>")
+              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
                .center()
-                .print()
         ,
-        newCanvas(550,120)
+        newCanvas(550,200)
             .add(0, 0, getText("Bewertung"))
             .center()
             .print()
           ,
-          
+            newText("Leerzeile"," <br></p>")
+                   .center()
+                 .print()
+                  ,
         newScale("Skala1", 7)
             .settings.css("font-family", "calibri").settings.css("font-size", "22px")
             .settings.labelsPosition("bottom").color("white")
-            .settings.before(newText("<b>sehr natürlich</b>&ensp;"))
+            .settings.before(newText("<b>vollkommen natürlich</b>&ensp;"))
             .settings.after(newText("&ensp;<b>vollkommen unnatürlich</b>"))
+            .log ("all")
             .center()
+            .print()
+            .wait()
+        ,
+        newText ("Probe","<b>Sehr gut! Klicke auf &quotWeiter&quot, um zur nächsten Seite zu kommen.</b> </br></p>")
+        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+        .settings.center()
+        .print()
+        ,
+        newButton("Weiter", "Weiter")
+         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+        .settings.center()
+            .print()
+             .wait(getAudio("KuhAudio").test.hasPlayed()
+                  .failure( newText('errorplay', "<br>Bitte höre dir die Audiodatei an, bevor du sie bewertest.").color("red") .center().print() ))
+        
+        );
+PennController ("Probedurchlauf2",
+        newAudio("KuhAudio2", "6_Kuh2_ja.wav" ) 
+                .center()
             ,
-       
-        newCanvas(570,60)
-            .add(90, 0, getScale("Skala1").settings.log("all"))
+        newImage("Kuhbild","Bild2-Kuh.jpg") 
+                .center()
+                .size(400,600)
+    
+            ,
+        newCanvas ("Durchlauf2", 600,650)
+            .add(   100, 0, getImage("Kuhbild"))
+            .add( 150, 620, getAudio("KuhAudio2"))
+            .print()
+        ,
+        newText("Bewertung","<p align=center><br>Bitte den angehörten Satz bewerten. <b> </br> <br> Wie natürlich empfindest du den Satz? </b> </br> Bitte auf der Skala einen Wert anklicken.</br>")
+              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+               .center()
+               ,
+        newCanvas(550,200)
+            .add(110, 15, getText("Bewertung"))
+            .center()
+            .print()
+                  ,
+        newScale("Skala1", 7)
+            .settings.css("font-family", "calibri").settings.css("font-size", "22px")
+            .settings.labelsPosition("bottom").color("white")
+            .settings.before(newText("<b>vollkommen natürlich</b>&ensp;"))
+            .settings.after(newText("&ensp;<b>vollkommen unnatürlich</b>"))
+            .log ("all")
+            .center()
+            .print()
+            .wait()
+        ,
+        newText ("Probe","<b>Sehr gut! Klicke auf &quotWeiter&quot, um zur nächsten Seite zu kommen.</b> </br></p>")
+        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+        .settings.center()
+        .print()
+        ,
+        newButton("Weiter", "Weiter")
+         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+        .settings.center()
+            .print()
+             .wait(getAudio("KuhAudio2").test.hasPlayed()
+                  .failure( newText('errorplay', "<br>Bitte höre dir die Audiodatei an, bevor du sie bewertest.").color("red") .center().print() ))
+        
+        );
+        
+ PennController ("Probedurchlauf3",
+        newAudio("KuhAudio3", "23_Kuh3_ja.wav" ) 
+                .center()
+            ,
+        newImage("Kuhbild","Bild2-Kuh.jpg") 
+                .center()
+                .size(400,600)
+    
+            ,
+        newCanvas ("Durchlauf3", 600,650)
+            .add(   100, 0, getImage("Kuhbild"))
+            .add( 150, 620, getAudio("KuhAudio3"))
+            .print()
+        ,
+        newText("Bewertung","<p align=center><br>Bitte den angehörten Satz bewerten. <b> </br> <br> Wie natürlich empfindest du den Satz? </b> </br> Bitte auf der Skala einen Wert anklicken.</br>")
+              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+               .center()
+               ,
+        newCanvas(550,200)
+            .add(110, 15, getText("Bewertung"))
+            .center()
+            .print()
+                  ,
+        newScale("Skala1", 7)
+            .settings.css("font-family", "calibri").settings.css("font-size", "22px")
+            .settings.labelsPosition("bottom").color("white")
+            .settings.before(newText("<b>vollkommen natürlich</b>&ensp;"))
+            .settings.after(newText("&ensp;<b>vollkommen unnatürlich</b>"))
+            .log ("all")
+            .center()
+            .print()
+            .wait()
+        ,
+        newText ("Probe","<b>Sehr gut! Dann geht es jetzt los.</b> </br></p>")
+        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+        .settings.center()
+        .print()
+        ,
+        newButton("Weiter", "Weiter")
+         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+        .settings.center()
+            .print()
+             .wait(getAudio("KuhAudio3").test.hasPlayed()
+                  .failure( newText('errorplay', "<br>Bitte höre dir die Audiodatei an, bevor du sie bewertest.").color("red") .center().print() ))
+        
+        );
+
+        PennController.ResetPrefix(null);
+        PennController.AddHost("https://amor.cms.hu-berlin.de/~elericha/reise/");
+        
+        // Now create the Item trials reading the audio references from audios
+        
+        newTrial ("Einleitung",
+        
+            newText ("Heading-Einleitung",  "<p><b>Gesprächssituation</b></p>")
+            .settings.css ("font-size", "22px")
             .center()
             .print()
             ,
-        newButton( "Weiter" )
+        
+                newImage("Einleitung","Einleitung_Freundinnen-web.jpg") 
+                        .size(600,400)
+                        .center()
+                        .print()
+                        
+                ,
+                    newText("Einleitung","<p align=center><br>Zwei Freundinnen sitzen gemeinsam in einem Café und unterhalten sich.</br> <br> Die eine war gerade im Urlaub und erzählt, was sie dort erlebt hat.</br> <br> Sie zeigt der Freundin Fotos vom Urlaub auf ihrem Handy.</br> </p>")
+                      .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+                       .center()
+                ,
+                newCanvas(620,180)
+                    .add(20, 0, getText("Einleitung"))
+                    .center()
+                    .print()
+                  ,
+                    newText("Leerzeile"," <br></p>")
+                           .center()
+                         .print()
+                          
+             ,
+                newButton("Weiter", "Weiter")
+                 .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+                 .center()
+                    .print()
+                    .wait()
+                
+                )
+        Template ("OGaudios.csv", row =>
+        
+        newTrial ("Studie",
+        
+                newText ("counter", row.Anzahl)
+                .settings.css ("font-size", "18px")
+                .settings.css("")
                 .center()
                 .print()
-                .wait(getScale("Skala1").test.selected()
-                  .failure( newText('errorage', "<br>Bitte Punkt auf der Skala wählen.").color("red") .center().print() )
+                ,
+                newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
+                       .center()
+                  ,
+               newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
+                       .center()
+                       .size(400,600)
+            
+                  ,
+                newCanvas ("Durchlauf", 600,650)
+                    .add(   100, 0, getImage("Image"))
+                    .add( 150, 620, getAudio("Audio"))
+                    .print()
+                ,
+                    newText("Bewertung","<p align=center><br>Bitte den angehörten Satz bewerten. <b> </br> <br> Wie natürlich empfindest du den Satz? </b> </br> Bitte auf der Skala einen Wert anklicken.</br>")
+                      .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+                       .center()
+                ,
+                newCanvas(550,200)
+                    .add(110, 15, getText("Bewertung"))
+                    .center()
+                    .print()
+                          ,
+                newScale("Skala1", 7)
+                    .settings.css("font-family", "calibri").settings.css("font-size", "22px")
+                    .settings.labelsPosition("bottom").color("white")
+                    .settings.before(newText("<b>vollkommen natürlich</b>&ensp;"))
+                    .settings.after(newText("&ensp;<b>vollkommen unnatürlich</b>"))
+                    .log ("all")
+                    .center()
+                    .print()
+                    .wait()
+                ,
+                newText ("Probe","<b>Klicke erst auf &quotWeiter&quot, wenn die Audiodatei fertig abgespielt wurde.</b> </br></p>")
+                .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+                .settings.center()
+                .print()
+                ,
+                newButton("Weiter", "Weiter")
+                 .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+                .settings.center()
+                    .print()
+                     .wait(getAudio("Audio").test.hasPlayed()
+                          .failure( newText('errorplay', "<br>Bitte höre dir die Audiodatei an, bevor du sie bewertest.").color("red") .center().print() ))
+                        
+                
                 )
-        )
-        .log("Audio", Audio)    // Log which audio was played
-        )
+                .log ("Audio", row.Audio)
+                .log ("Group", row.Group)
+                .log ("item", row.item)
+                );
+
+//Ende des Hauptteils + Überleitung zu Fragebogen 
+
+PennController ("Ende",
+            
+            newText ("Danke", "<p align=center> <br> <b>Vielen Dank!</b></br></p> <p><br> Jetzt bitten wir Dich, einen Fragebogen auszufüllen, der uns bei der Auswertung unserer Studie hilft. </br> <br> Hier fragen wir Dich nach einigen persönlichen Angaben (z.B. Alter, Ausbildung) sowie Informationen zu Deinen Sprachkenntnissen und Deinem persönlichen Sprachgebrauch.</br></p>" )
+            .center()
+            .print()
+            ,
+            newButton ("Weiter", "Weiter")
+            .center()
+            .print ()
+            .wait()
+        );        
     
-//Zwischenstopp zwischen Durchgang 1 und Durchgang 2
-PennController("Zwischenstopp",
-    newText("Anleitung","Vielen Dank! In den nächsten Schritten fragen wir nach persönlichen Informationen, die uns bei der Auswertung der Studie helfen werden. <p>")
-        .center()
-        .print()
-    ,
-    newButton("Weiter", "Bitte weiter klicken sobald bereit")
-    .center()
-        .print()
-        .wait()
-    )
-// Now create the ItemQ trials reading the audio references from audios2
-// 2. Durchlauf gelöscht 
 
  //Metadaten
     //Personenbezogene Daten Seite 1 - Alter, Geschlecht, Bildung, Sozialerstatus
