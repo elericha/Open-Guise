@@ -4,12 +4,16 @@ PennController.AddHost("https://amor.cms.hu-berlin.de/~elericha/reise/");
 PennController.Sequence("Info",
                         "Consent",
                         "Code",
-                        "Anleitung",
-                        "Probedurchlauf",
                         "Counter",
-                        "Durchlauf",
-                        "Zwischenstopp",
-                        "Meta1","Meta2", "send","Final");
+                        "StartProbe",
+                        "Beispiel",
+                        "Probedurchlauf",
+                        "Probedurchlauf2",
+                        "Probedurchlauf3",
+                        "Einleitung2",
+                        "Studie",
+                        "Ende",
+                        "Meta1","Meta2","Feedback","send","Final");
 PennController.DebugOff();
 var progressBarText = "Fortschritt";
 
@@ -390,7 +394,7 @@ PennController ("Probedurchlauf2",
         
         // Now create the Item trials reading the audio references from audios
         
-        newTrial ("Einleitung",
+        PennController ("Einleitung2",
         
             newText ("Heading-Einleitung",  "<p><b>Gesprächssituation</b></p>")
             .settings.css ("font-size", "22px")
@@ -427,7 +431,7 @@ PennController ("Probedurchlauf2",
                 )
         Template ("OGaudios.csv", row =>
         
-        newTrial ("Studie",
+        PennController ("Studie",
         
                 newText ("counter", row.Anzahl)
                 .settings.css ("font-size", "18px")
