@@ -1,0 +1,21 @@
+Group,item,Audio,Image,Anzahl
+A,1,17_Berge1_ja.wav,Bild1-Berge.jpg,1 von 25
+A,2,4_Berge2_ka.wav,Bild1-Berge.jpg,2 von 25
+A,3,24_Berge3_ja.wav,Bild1-Berge.jpg,3 von 25
+A,4,25_Berge4_ka.wav,Bild1-Berge.jpg,4 von 25
+A,5,16_Berge5_ja.wav,Bild1-Berge.jpg,5 von 25
+A,6,17_Zelten1_ja.wav,Bild2-Zelten.jpg, 6 von 25
+A,7,5_Zelten2_ja.wav,Bild2-Zelten.jpg,7 von 25 
+A,8,9_Zelten3_ja.wav,Bild2-Zelten.jpg,8 von 25
+A,9,21_Zelten4_ja.wav,Bild2-Zelten.jpg,9 von 25
+A,10,15_Zelten5_ja.wav,Bild2-Zelten.jpg,10 von 25
+B,1,17_Berge1_ja.wav,Bild1-Berge.jpg,1 von 25
+B,2,4_Berge2_ka.wav,Bild1-Berge.jpg,2 von 25
+B,3,24_Berge3_ja.wav,Bild1-Berge.jpg,3 von 25
+B,4,17_Berge4_pause.wav,Bild1-Berge.jpg,4 von 25
+B,5,16_Berge5_ja.wav,Bild1-Berge.jpg,5 von 25
+B,6,17_Zelten1_ja.wav,Bild2-Zelten.jpg,6 von 25
+B,7,5_Zelten2_ja.wav,Bild2-Zelten.jpg,7 von 25
+B,8,9_Zelten3_ja.wav,Bild2-Zelten.jpg,8 von 25
+B,9,10_Zelten4_Pause.wav,Bild2-Zelten.jpg,9 von 25
+B,10,15_Zelten5_ja.wav,Bild2-Zelten.jpg,10 von 25
