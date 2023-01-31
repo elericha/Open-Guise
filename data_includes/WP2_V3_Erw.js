@@ -9,9 +9,15 @@ PennController.Sequence("Info",
                         "Einleitung",
                         "Beispiel",
                         "Probedurchlauf",
+                        "Los",
+                        "EinleitungStudie",
                         "Studie",
+                        "AufmerksamkeitZelten",
+                        "Studie2",
+                        "AufmerksamkeitHotel",
+                        "Studie3",
                         "Ende",
-                        "Meta1","Meta2","Feedback","send","Final");
+                        "Meta-Fragen1","Meta2", "Meta3", "Feedback","send","Final");
 PennController.DebugOff();
 var progressBarText = "Fortschritt";
 
@@ -21,20 +27,20 @@ PennController.SetCounter("Counter","inc",1)
 
 PennController("Info",
         newImage("HU","HU-Logo.jpeg")  
-            .size(140,140)
-         ,
-        newImage("RUEG","dfg_rueg_header.jpg")
-            .size(392,120)
-        ,newImage ("DFG", "DFG-logo.jpeg")
-            .size (212,120)
+        .size(90,90)
         ,
-         newCanvas("Logosnebeneinander",1138,140) //bildet den Header mit Logos
-            .add(210,0, getImage("HU"))
-            .add(370,15, getImage("RUEG"))
-            .add(750,15, getImage("DFG"))
-            .center()
-            .print()
-            ,   
+        newImage("RUEG","dfg_rueg_header.jpg")
+        .size(220,60)
+        ,newImage ("DFG", "DFG-logo.jpeg")
+        .size (140,65)
+        ,
+        newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
+        .add(250,0, getImage("HU"))
+        .add(430,15, getImage("RUEG"))
+        .add(760,15, getImage("DFG"))
+        .center()
+        .print()
+        ,
         newText("Leerzeile"," <br></p>")
         .center()
         .print()
@@ -55,21 +61,21 @@ newButton("Weiter","Weiter")
 //Mit Boxen zum Anklicken und Dateien zum herunterladen; angelehnt an C04
 
 PennController("Consent",
-   newImage("HU","HU-Logo.jpeg")  
-            .size(140,140)
-         ,
-        newImage("RUEG","dfg_rueg_header.jpg")
-            .size(392,120)
-        ,newImage ("DFG", "DFG-logo.jpeg")
-            .size (212,120)
-        ,
-         newCanvas("Logosnebeneinander",1138,140) //bildet den Header mit Logos
-            .add(210,0, getImage("HU"))
-            .add(370,15, getImage("RUEG"))
-            .add(750,15, getImage("DFG"))
-            .center()
-            .print()
-            ,   
+    newImage("HU","HU-Logo.jpeg")  
+    .size(90,90)
+    ,
+    newImage("RUEG","dfg_rueg_header.jpg")
+    .size(220,60)
+    ,newImage ("DFG", "DFG-logo.jpeg")
+    .size (140,65)
+    ,
+    newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
+    .add(250,0, getImage("HU"))
+    .add(430,15, getImage("RUEG"))
+    .add(760,15, getImage("DFG"))
+    .center()
+    .print()
+    ,
         newText("Leerzeile"," <br></p>")
         .center()
         .print()
@@ -99,21 +105,21 @@ PennController("Consent",
 
 //CODE-EINGABE
 PennController("Code",
-     newImage("HU","HU-Logo.jpeg")  
-            .size(140,140)
-         ,
-        newImage("RUEG","dfg_rueg_header.jpg")
-            .size(392,120)
-        ,newImage ("DFG", "DFG-logo.jpeg")
-            .size (212,120)
-        ,
-         newCanvas("Logosnebeneinander",1138,140) //bildet den Header mit Logos
-            .add(210,0, getImage("HU"))
-            .add(370,15, getImage("RUEG"))
-            .add(750,15, getImage("DFG"))
-            .center()
-            .print()
-            ,   
+    newImage("HU","HU-Logo.jpeg")  
+    .size(90,90)
+    ,
+    newImage("RUEG","dfg_rueg_header.jpg")
+    .size(220,60)
+    ,newImage ("DFG", "DFG-logo.jpeg")
+    .size (140,65)
+    ,
+    newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
+    .add(250,0, getImage("HU"))
+    .add(430,15, getImage("RUEG"))
+    .add(760,15, getImage("DFG"))
+    .center()
+    .print()
+    ,
         newText("Leerzeile"," <br></p>")
         .center()
         .print()
@@ -155,28 +161,6 @@ PennController("Code",
 //Einleitung nur als kurzer Text
 PennController ("StartProbe",
 
-            newText("StartProbe","<p align=center><br>Im Folgenden stellen wir dir eine Situation vor. Du wirst ein <b>Bild sehen</b> und eine kurze <b>Beschreibung der Situation lesen.</b> </br> <br> Danach wirst du <b>weitere Bilder sehen </b> und <b>Sätze anhören.</b> </br> <br>Die Aufgabe in den nächsten Minuten besteht darin, diese <b> Sätze zu bewerten.</b> Dazu kannst du eine <b>Skala anklicken.</b></br> </p>")
-              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
-               .center()
-        ,
-        newCanvas(620,200)
-            .add(20, 0, getText("StartProbe"))
-            .center()
-            .print()
-          ,
-            newText("Leerzeile"," <br></p>")
-                   .center()
-                 .print()
-                  
-     ,
-        newButton("Weiter", "Weiter")
-         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-         .center()
-            .print()
-            .wait()
-        
-        );
-// Einleitung der Gesprächssituation mit Bild 
 newText ("Heading-Start",  "<p><b>Anleitung</b></p>")
    .settings.css ("font-size", "22px")
    .center()
@@ -343,7 +327,7 @@ PennController ("Probedurchlauf",
 
 PennController ("Los",
 
-       newText ("Probe","<br> </br> <p> <b>Sehr gut! Dann geht es jetzt los.</b> </br> <br> Klicke auf &quot;Start&quot;, um zu beginnen. </br></p>")
+       newText ("Probe","<br> </br> <p> <b>Das war schon alles! </b> </br> <br> Vergiss bitte nicht, dass du manchmal dazu aufgefordert wirst, Fragen zu einigen Sätzen zu beantworten. </br> <br> Klicke auf &quot;Start&quot;, um mit der Studie zu beginnen. </br></p>")
        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
        .settings.center()
        .print()
@@ -668,7 +652,7 @@ PennController ("Los",
            ); 
    PennController ("Ende",
        
-       newText ("Danke", "<p align=center > <br> <b>Vielen Dank!</b></br></p> <p><br> Jetzt bitten wir Dich, einen Fragebogen auszufüllen, der uns bei der Auswertung unserer Studie helfen hilft. </br> <br> Hier fragen wir Dich nach einigen persönlichen Angaben (z.B. Alter, Ausbildung) sowie Informationen zu Deinen Sprachkenntnissen und Deinem persönlichen Sprachgebrauch.</br> <br> </br> </p>" )
+       newText ("Danke", "<p align=center > <br> <b>Vielen Dank!</b></br></p> <p><br> Jetzt bitten wir Dich, einen Fragebogen auszufüllen, der uns bei der Auswertung unserer Studie helfen wird. </br> <br> Hier fragen wir Dich nach einigen persönlichen Angaben (z.B. Alter, Ausbildung) sowie Informationen zu Deinen Sprachkenntnissen und Deinem persönlichen Sprachgebrauch.</br> <br> </br> </p>" )
        .settings.css ("font-size", "18px")
        .center()
        .print()
@@ -679,436 +663,746 @@ PennController ("Los",
        .print ()
        .wait()
    );
-
- //Metadaten
-    //Personenbezogene Daten Seite 1 - Alter, Geschlecht, Bildung, Sozialerstatus
-    PennController ("Meta-Fragen1",
-    newImage("HU","HU-Logo.jpeg")  
-                .size(90,90)
-             ,
-            newImage("RUEG","dfg_rueg_header.jpg")
-                .size(220,60)
-            ,newImage ("DFG", "DFG-logo.jpeg")
-                .size (140,65)
-            ,
-             newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
-                .add(207,0, getImage("HU"))
-                .add(500,15, getImage("RUEG"))
-                .add(885,15, getImage("DFG"))
-                .color ("white")
-                .center()
-                .print()
-            ,
-        newText("Leerzeile"," <br></p>")
-        .center()
-        .print()
-    ,
-        newText("Alter", "Wie alt bist du?")
-            .settings.css("font-size", "18px")
-            .settings.bold()
-            .center()
-            .print()
-        ,
-        newTextInput("AlterIn")
-        .log(),
-    
-        newText("Geschlechtsidentität", "Welcher Geschlechtsidentität fühlst du dich zugehörig?")
-            .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-        newDropDown("IdentityDrop", "Bitte wähle eine Option aus")
-            .settings.add("Divers", "Weiblich", "Männlich")
-            .settings.size (340,20)
-            .log(),
-        newText("Wohnort", "Aktueller Wohnort")
-            .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-        newText("SeitWohnort","Seit welchem Lebensalter wohnst du hier?")
-            .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-        newTextInput("WohnortIn").log(), 
-        newTextInput("SeitWohnortIn").log(), 
-        newText("Geburtsort", "Geburtsort")
-            .settings.css("font-size", "18px")
-            .settings.bold(),
-        newTextInput ("GeburtIn").log(),
-        newText("AndereOrte", "<br>Falls zutreffend, gib bitte vorherige Wohnorte an. Welche Lebensjahre hast du dort verbracht? </br>")
-            .settings.css("font-size", "18px")
-            .settings.bold()
-            .center()
-            ,
-        newText ("WohnortA", "1. Wohnort")
-        .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-         newText ("WohnortB", "2. Wohnort")
-        .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-         newText ("WohnortC", "3. Wohnort")
-        .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-         newText ("WohnortD", "4. Wohnort")
-        .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-         newText ("WohnortE", "5. Wohnort")
-        .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-        newTextInput ("WohnAIn")
-        .settings.size (270,20)
-        .log(),
-        newTextInput ("WohnBIn")
-        .settings.size (270,20)
-        .log(),
-        newTextInput ("WohnCIn")
-        .settings.size (270,20)
-        .log(),
-        newTextInput ("WohnDIn")
-        .settings.size (270,20)
-        .log(),
-        newTextInput ("WohnEIn")
-        .settings.size (270,20)
-        .log(),
-        newText ("VonA", "<b>Alter Anfang </b> </br> <small>z.B. 5 </small>")
-        .settings.css("font-size", "18px")
-            .center(),
-        newText ("BisA", "<b>Alter Ende</b> </br> <small> z.B. 12 </small>")
-        .settings.css("font-size", "18px")
-            .center(),
-        newTextInput ("AlterAAIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterABIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterBAIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterBBIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterCAIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterCBIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterDAIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterDBIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterEAIn")
-        .settings.size (100,20)
-        .log(),
-         newTextInput ("AlterEBIn")
-        .settings.size (100,20)
-        .log(),
-        newText ("Bildung", "Höchster Bildungsabschluss")
-        .settings.css("font-size", "18px")
-            .settings.bold()
-            .center(),
-        newDropDown("BildungDrop", "Bitte eine Option ausw&auml;hlen")
-        .settings.add("kein Abschluss","Schulabschluss","Abitur oder gleichwertiger Abschluss","Ausbildung","Studium ohne Abschluss","Bachelor","Master","Magister","Diplom", "Promotion", "Sonstige")
-        .settings.size (340,20)
-        .log(),
-        newText ("Studium", "<b>Studierst du?</b> <small> Falls ja, welches Fach und welches Semester? </small>")
-        .settings.css ("font-size", "18px")
-        .center(),
-        newTextInput ("StudiumIn")
-        .settings.size (220,20)
-        .settings.hidden ()
-        ,
-        newDropDown ("StudiumDrop","ausw&auml;hlen")
-        .settings.add ("Ja", "Nein")
-        .settings.callback(
-                       getDropDown("StudiumDrop")
-                       .test.selected("Ja")
-                       .success(getTextInput("StudiumIn").settings.visible())),
-        newText ("errorAlter", "Bitte gib dein Alter an.")
-       .settings.css ("font-size", "14px")
-       .color ("red")
-       .settings.hidden ()
-       ,
-        newText ("errorIdentity", "Bitte gib eine Geschlechtsidentität an.")
-       .settings.css ("font-size", "14px")
-       .color ("red")
-       .settings.hidden ()
-       ,
-        newText ("errorWohnort", "Bitte gib deinen Wohnort an.")
-       .settings.css ("font-size", "14px")
-       .color ("red")
-       .settings.hidden ()
-       ,
-        newText ("errorSeitWann", "Bitte gib an, seit welchem Alter du hier wohnst.")
-       .settings.css ("font-size", "14px")
-       .color ("red")
-       .settings.hidden ()
-       ,
-        newText ("errorGeburt", "Bitte gib deinen Geburtsort an.")
-       .settings.css ("font-size", "14px")
-       .color ("red")
-       .settings.hidden ()
-       ,
-        newText ("errorBildung", "Bitte gib deinen höchsten Bildungsabschluss an.")
-       .settings.css ("font-size", "14px")
-       .color ("red")
-       .settings.hidden ()
-       ,
-        newText ("errorStudium", "Bitte gib an, ob du studierst.")
-       .settings.css ("font-size", "14px")
-       .color ("red")
-       .settings.hidden ()
-       ,
-        newCanvas("Fragen1",1000,600)
-            .settings.add(150,0, getText("Alter"))
-            .settings.add(600,0, getTextInput("AlterIn"))
-            .settings.add (150,20, getText ("errorAlter"))
-            .settings.add(150,50, getText("Geschlechtsidentität"))
-            .settings.add(600,50, getDropDown("IdentityDrop"))
-            .settings.add (150,70, getText ("errorIdentity"))
-            .settings.add(150,100, getText("Wohnort"))
-            .settings.add(600,100, getTextInput("WohnortIn"))
-            .settings.add (300,103, getText ("errorWohnort"))
-            .settings.add(150,130, getText("SeitWohnort"))
-            .settings.add (600,130, getTextInput ("SeitWohnortIn")) 
-            .settings.add(150,150, getText ("errorSeitWann"))
-            .settings.add(150,180, getText ("Geburtsort"))
-            .settings.add(600,180, getTextInput ("GeburtIn"))
-            .settings.add (150,200, getText ("errorGeburt"))
-            .settings.add(150,220, getText ("AndereOrte"))
-            .settings.add (150,330, getText ("WohnortA"))
-            .settings.add (150,360, getText ("WohnortB"))
-            .settings.add (150,390, getText ("WohnortC"))
-            .settings.add (150,420, getText ("WohnortD"))
-            .settings.add (150,450, getText ("WohnortE"))
-            .settings.add(280,330, getTextInput ("WohnAIn"))
-            .settings.add(280,360, getTextInput ("WohnBIn"))
-            .settings.add(280,390, getTextInput ("WohnCIn"))
-            .settings.add(280,420, getTextInput ("WohnDIn"))
-            .settings.add(280,450, getTextInput ("WohnEIn"))
-            .settings.add(620,280, getText ("VonA"))
-            .settings.add(780,280, getText ("BisA"))
-            .settings.add(620,330, getTextInput ("AlterAAIn"))
-            .settings.add(780,330, getTextInput ("AlterABIn"))
-            .settings.add(620,360, getTextInput ("AlterBAIn"))
-            .settings.add(780,360, getTextInput ("AlterBBIn"))
-            .settings.add(620,390, getTextInput ("AlterCAIn"))
-            .settings.add(780,390, getTextInput ("AlterCBIn"))
-            .settings.add(620,420, getTextInput ("AlterDAIn"))
-            .settings.add(780,420, getTextInput ("AlterDBIn"))
-            .settings.add(620,450, getTextInput ("AlterEAIn"))
-            .settings.add(780,450, getTextInput ("AlterEBIn"))
-            .settings.add(150,520, getText ("Bildung"))
-            .settings.add(600,520, getDropDown ("BildungDrop"))
-            .settings.add(150,540, getText ("errorBildung"))
-            .settings.add(150,560, getText ("Studium"))
-            .settings.add(600,560, getDropDown ("StudiumDrop"))
-            .settings.add(720,560, getTextInput ("StudiumIn"))
-            .settings.add(150,580, getText ("errorStudium"))
-           
-        .center()
-        .print()
-        ,
-        
-        newButton ("Weiter", "Weiter")
-        .center()
-       ,
-       newCanvas ("ButtonCanvas",1000,40)
-       .settings.add (420,20, getButton ("Weiter"))
-       .print()
-       ,
-       getButton ("Weiter")
-       .wait(
-                newFunction('dummy', ()=>true).test.is(true)
-                .and( getDropDown("BildungDrop").test.selected()
-                .failure (getText ("errorBildung").settings.visible()))
-                .and( getDropDown("IdentityDrop").test.selected()
-                .failure (getText ("errorIdentity").settings.visible()))
-                .and( getTextInput("AlterIn").test.text(/^.+/)
-                .failure (getText ("errorAlter").settings.visible())) 
-                .and( getTextInput("WohnortIn").test.text(/^.+/)
-                .failure (getText ("errorWohnort").settings.visible())) 
-                .and( getTextInput("SeitWohnortIn").test.text(/^.+/)
-                .failure (getText ("errorSeitWann").settings.visible())) 
-                .and( getTextInput("GeburtIn").test.text(/^.+/)
-                .failure (getText ("errorGeburt").settings.visible())) 
-                .and( getDropDown("StudiumDrop").test.selected()
-                .failure (getText ("errorStudium").settings.visible())) 
-                )
-        ,
-                    getDropDown("IdentityDrop").wait("first")
-                   ,
-                   getDropDown("BildungDrop").wait("first")
-                   ,
-                    getDropDown("StudiumDrop").wait("first")             
-                   
-                ); 
-    
- //Metadaten 2: Sprachbiographie
-PennController("Meta2",
-    newImage("HU","HU Logo.png")  
-            .size(289,65)
+ PennController ("Meta-Fragen1",
+ newImage("HU","HU-Logo.jpeg")  
+             .size(90,90)
+          ,
+         newImage("RUEG","dfg_rueg_header.jpg")
+             .size(220,60)
+         ,newImage ("DFG", "DFG-logo.jpeg")
+             .size (140,65)
          ,
-        newImage("RUEG","dfb-")
-            .size(230,60)
-        ,
-         newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
-            .add(100,0, getImage("HU"))
-            .add(450,0, getImage("RUEG"))
-            .center()
-            .print()
-        ,
-
-       newText("SprachenMutter","<b>Welche Sprachen spricht/sprach Ihre Mutter?</b><br>Bitte sortieren und mit der am besten gesprochenen Sprache beginnen.")
- //       .center()
-        .print()
-,
-    newCanvas("SprachenMutter", 1, 10)
-        .center()
-        .print()
-,
-    newTextInput("SprachenMutter")
- //       .center()
-        .size(600,80)
-        .print()
-,
-    getTextInput("SprachenMutter")
-        .log("final")
-,
-newText("Leerzeile"," <br></p>")
-    .center()
-    .print()
-,
-    newText("SprachenVater","<b>Welche Sprachen spricht/sprach Ihr Vater?</b><br> Bitte sortieren und mit der am besten gesprochenen Sprache beginnen.")
-  //      .center()
-        .print()
-,
-    newCanvas("SprachenVater", 1, 10)
-//        .center()
-        .print()
-,
-    newTextInput("SprachenVater")
-//        .center()
-        .size(600,80)
-        .print()
-,
-    getTextInput("SprachenVater")
-        .log("final")
-               ,
-               newText("Leerzeile"," <br></p>")
-                 .center()
-                .print()
-                 ,
-       newText("SprachenSelbst","<b>Welche Sprachen sprechen Sie selbst im Alltag?</b><br> Mit wem und in welchen Situationen? Bitte sortieren und mit der am häufigsten gesprochenen Sprache beginnen.")
- //       .center()
-        .print()
-,
-    newCanvas("SprachenSelbst", 1, 10)
- //       .center()
-        .print()
-,
-    newTextInput("SprachenSelbst")
-  //      .center()
-        .size(600,80)
-        .print()
-,
-    getTextInput("SprachenSelbst")
-        .log("final")
+          newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
+             .add(207,0, getImage("HU"))
+             .add(500,15, getImage("RUEG"))
+             .add(885,15, getImage("DFG"))
+             .color ("white")
+             .center()
+             .print()
+         ,
+     newText("Leerzeile"," <br></p>")
+     .center()
+     .print()
+ ,
+     newText("Alter", "Wie alt bist du?")
+         .settings.css("font-size", "18px")
+         .settings.bold()
+         .center()
+         .print()
+     ,
+     newTextInput("AlterIn")
+     .log(),
+ 
+     newText("Geschlechtsidentität", "Welcher Geschlechtsidentität fühlst du dich zugehörig?")
+         .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newDropDown("IdentityDrop", "Bitte wähle eine Option aus")
+         .settings.add("Divers", "Weiblich", "Männlich")
+         .settings.size (340,20)
+         .log(),
+     newText("Wohnort", "Aktueller Wohnort")
+         .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText("SeitWohnort","Seit welchem Lebensalter wohnst du hier?")
+         .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newTextInput("WohnortIn").log(), 
+     newTextInput("SeitWohnortIn").log(), 
+     newText("Geburtsort", "Geburtsort")
+         .settings.css("font-size", "18px")
+         .settings.bold(),
+     newTextInput ("GeburtIn").log(),
+     newText("AndereOrte", "<br><b>Falls zutreffend, gib bitte vorherige Wohnorte an. Welche Lebensjahre hast du dort verbracht? </br> </b> <small> Bitte Land, Stadt angeben. </small> </br>")
+         .settings.css("font-size", "18px")
+         .center()
+         ,
+     newText ("WohnortA", "1. Wohnort")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+      newText ("WohnortB", "2. Wohnort")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+      newText ("WohnortC", "3. Wohnort")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+      newText ("WohnortD", "4. Wohnort")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+      newText ("WohnortE", "5. Wohnort")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newTextInput ("WohnAIn")
+     .settings.size (270,20)
+     .log(),
+     newTextInput ("WohnBIn")
+     .settings.size (270,20)
+     .log(),
+     newTextInput ("WohnCIn")
+     .settings.size (270,20)
+     .log(),
+     newTextInput ("WohnDIn")
+     .settings.size (270,20)
+     .log(),
+     newTextInput ("WohnEIn")
+     .settings.size (270,20)
+     .log(),
+     newText ("VonA", "<b>Alter beim Hinzug </b> </br> <small>z.B. 5 &#040;Jahre&#041; </small>")
+     .settings.css("font-size", "18px")
+         .center(),
+     newText ("BisA", "<b>Alter beim Wegzug</b> </br> <small> z.B. 12 &#040;Jahre&#041;</small>")
+     .settings.css("font-size", "18px")
+         .center(),
+     newTextInput ("AlterAAIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterABIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterBAIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterBBIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterCAIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterCBIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterDAIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterDBIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterEAIn")
+     .settings.size (100,20)
+     .log(),
+      newTextInput ("AlterEBIn")
+     .settings.size (100,20)
+     .log(),
+     newText ("Bildung", "Höchster Bildungsabschluss")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newDropDown("BildungDrop", "Bitte eine Option ausw&auml;hlen")
+     .settings.add("kein Abschluss","Schulabschluss","Abitur oder gleichwertiger Abschluss","Ausbildung","Studium ohne Abschluss","Bachelor","Master","Magister","Diplom", "Promotion", "Sonstige")
+     .settings.size (340,20)
+     .log(),
+     newText ("Studium", "<b>Studierst du?</b> <small> Falls ja, welches Fach und welches Semester? </small>")
+     .settings.css ("font-size", "18px")
+     .center(),
+     newTextInput ("StudiumIn")
+     .settings.size (220,20)
+     .settings.hidden ()
+     ,
+     newDropDown ("StudiumDrop","ausw&auml;hlen")
+     .settings.add ("Ja", "Nein")
+     .settings.callback(
+                    getDropDown("StudiumDrop")
+                    .test.selected("Ja")
+                    .success(getTextInput("StudiumIn").settings.visible())),
+     newText ("errorAlter", "Bitte gib dein Alter an.")
+    .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden ()
     ,
- newText("Leerzeile"," <br></p>")
-                 .center()
-                .print()
-                 ,
-
- newText("Dialekt","<b>Sprechen Sie einen Dialekt?</b><br> Mit wem und in welchen Situationen?")
-//        .center()
-        .print()
-,
-    newCanvas("Dialekt", 1, 10)
- //       .center()
-        .print()
-,
-
-    newTextInput("Dialekt")
- //       .center()
- .size(600,80)
-        .print()
-,
-    getTextInput("Dialekt")
-        .log("final")
-,
-newText("Leerzeile"," <br></p>")
-                 .center()
-                .print()
-                 ,
-newText("Email","<b>Dürften wir dich in Zukunft erneut kontaktieren?</b><br>Wenn ja, bitte Emailadresse angeben.<br>Die Angabe der Kontaktdaten ist freiwillig. Um Anonymität zu gewährleisten, wird diese Angabe getrennt vom ausgefüllten Fragebogen archiviert.")
-//        .center()
-        .print()
-,
-    newCanvas("Email", 1, 10)
- //       .center()
-        .print()
-,
-
-    newTextInput("Email")
- //       .center()
-        .size(600,80)
-        .print()
-,
-    getTextInput("Email")
-        .log("final")
-,
-newText("Leerzeile"," <br></p>")
-                 .center()
-                .print()
-                 ,
-    newButton("Ende", "Experiment beenden und Daten abschicken")
-               .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-               //.settings.center()
-               .log()
-               .center()
-               .print()
-               .wait(
-            newFunction('dummy', ()=>true).test.is(true)
-                .and(
-             getTextInput("SprachenMutter").test.text(/^.+/) // testing if at least one digit was written in the input box
-                .failure(
-                   newText("errormutter","<br>Bitte Sprachen der Mutter angeben")
-                   .settings.color("red")
-                   .center()
-                   .print())
-                ).and(
-             getTextInput("SprachenVater").test.text(/^.+/) // testing if at least one digit was written in the input box
-                .failure(
-                   newText("errorvater","<br>Bitte Sprachen des Vaters angeben.")
-                   .settings.color("red")
-                   .center()
-                   .print())
-             ).and(
-             getTextInput("SprachenSelbst").test.text(/^.+/) // testing if at least one digit was written in the input box
-                .failure(
-                   newText("errorselbst","<br>Bitte angeben welche Sprachen Sie im Alltag sprechen.")
-                   .settings.color("red")
-                   .center()
-                   .print())
-            ).and(
-             getTextInput("Dialekt").test.text(/^.+/) // testing if at least one digit was written in the input box
-                .failure(
-                   newText("errordialekt","<br>Bitte Dialekt angeben.")
-                   .settings.color("red")
-                   .center()
-                   .print())
-            )  
-
- )
-)
+     newText ("errorIdentity", "Bitte gib eine Geschlechtsidentität an.")
+    .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden ()
+    ,
+     newText ("errorWohnort", "Bitte gib deinen Wohnort an.")
+    .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden ()
+    ,
+     newText ("errorSeitWann", "Bitte gib an, seit welchem Alter du hier wohnst.")
+    .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden ()
+    ,
+     newText ("errorGeburt", "Bitte gib deinen Geburtsort an.")
+    .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden ()
+    ,
+     newText ("errorBildung", "Bitte gib deinen höchsten Bildungsabschluss an.")
+    .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden ()
+    ,
+     newText ("errorStudium", "Bitte gib an, ob du studierst.")
+    .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden ()
+    ,
+     newCanvas("Fragen1",1000,600)
+         .settings.add(150,0, getText("Alter"))
+         .settings.add(600,0, getTextInput("AlterIn"))
+         .settings.add (150,20, getText ("errorAlter"))
+         .settings.add(150,50, getText("Geschlechtsidentität"))
+         .settings.add(600,50, getDropDown("IdentityDrop"))
+         .settings.add (150,70, getText ("errorIdentity"))
+         .settings.add(150,100, getText("Wohnort"))
+         .settings.add(600,100, getTextInput("WohnortIn"))
+         .settings.add (300,103, getText ("errorWohnort"))
+         .settings.add(150,130, getText("SeitWohnort"))
+         .settings.add (600,130, getTextInput ("SeitWohnortIn")) 
+         .settings.add(150,150, getText ("errorSeitWann"))
+         .settings.add(150,180, getText ("Geburtsort"))
+         .settings.add(600,180, getTextInput ("GeburtIn"))
+         .settings.add (150,200, getText ("errorGeburt"))
+         .settings.add(150,220, getText ("AndereOrte"))
+         .settings.add (150,330, getText ("WohnortA"))
+         .settings.add (150,360, getText ("WohnortB"))
+         .settings.add (150,390, getText ("WohnortC"))
+         .settings.add (150,420, getText ("WohnortD"))
+         .settings.add (150,450, getText ("WohnortE"))
+         .settings.add(280,330, getTextInput ("WohnAIn"))
+         .settings.add(280,360, getTextInput ("WohnBIn"))
+         .settings.add(280,390, getTextInput ("WohnCIn"))
+         .settings.add(280,420, getTextInput ("WohnDIn"))
+         .settings.add(280,450, getTextInput ("WohnEIn"))
+         .settings.add(620,280, getText ("VonA"))
+         .settings.add(780,280, getText ("BisA"))
+         .settings.add(620,330, getTextInput ("AlterAAIn"))
+         .settings.add(780,330, getTextInput ("AlterABIn"))
+         .settings.add(620,360, getTextInput ("AlterBAIn"))
+         .settings.add(780,360, getTextInput ("AlterBBIn"))
+         .settings.add(620,390, getTextInput ("AlterCAIn"))
+         .settings.add(780,390, getTextInput ("AlterCBIn"))
+         .settings.add(620,420, getTextInput ("AlterDAIn"))
+         .settings.add(780,420, getTextInput ("AlterDBIn"))
+         .settings.add(620,450, getTextInput ("AlterEAIn"))
+         .settings.add(780,450, getTextInput ("AlterEBIn"))
+         .settings.add(150,520, getText ("Bildung"))
+         .settings.add(600,520, getDropDown ("BildungDrop"))
+         .settings.add(150,540, getText ("errorBildung"))
+         .settings.add(150,560, getText ("Studium"))
+         .settings.add(600,560, getDropDown ("StudiumDrop"))
+         .settings.add(720,560, getTextInput ("StudiumIn"))
+         .settings.add(150,580, getText ("errorStudium"))
+        
+     .center()
+     .print()
+     ,
+     
+     newButton ("Weiter", "Weiter")
+     .center()
+    ,
+    newCanvas ("ButtonCanvas",1000,60)
+    .settings.add (420,20, getButton ("Weiter"))
+    .print()
+    ,
+    getButton ("Weiter")
+    .wait(
+             newFunction('dummy', ()=>true).test.is(true)
+             .and( getDropDown("BildungDrop").test.selected()
+             .failure (getText ("errorBildung").settings.visible()))
+             .and( getDropDown("IdentityDrop").test.selected()
+             .failure (getText ("errorIdentity").settings.visible()))
+             .and( getTextInput("AlterIn").test.text(/^.+/)
+             .failure (getText ("errorAlter").settings.visible())) 
+             .and( getTextInput("WohnortIn").test.text(/^.+/)
+             .failure (getText ("errorWohnort").settings.visible())) 
+             .and( getTextInput("SeitWohnortIn").test.text(/^.+/)
+             .failure (getText ("errorSeitWann").settings.visible())) 
+             .and( getTextInput("GeburtIn").test.text(/^.+/)
+             .failure (getText ("errorGeburt").settings.visible())) 
+             .and( getDropDown("StudiumDrop").test.selected()
+             .failure (getText ("errorStudium").settings.visible())) 
+             )
+     ,
+                 getDropDown("IdentityDrop").wait("first")
+                ,
+                getDropDown("BildungDrop").wait("first")
+                ,
+                 getDropDown("StudiumDrop").wait("first")             
+                
+             ); 
+  //Metadaten 2: Sprachbiographie
+ PennController("Meta2",
+     newImage("HU","HU-Logo.jpeg")  
+             .size(90,90)
+          ,
+         newImage("RUEG","dfg_rueg_header.jpg")
+             .size(220,60)
+         ,newImage ("DFG", "DFG-logo.jpeg")
+             .size (140,65)
+         ,
+          newCanvas("Logosnebeneinander",1138,100) //bildet den Header mit Logos
+             .add(230,0, getImage("HU"))
+             .add(450,15, getImage("RUEG"))
+             .add(770,15, getImage("DFG"))
+             .color ("white")
+             .center()
+             .print()
+         ,
+     newText("Leerzeile"," <br></p>")
+     .center()
+     .print()
+     ,
+     newFunction( () => window.scrollTo(0,0) ).call()
+     ,
+      newText ("AlterDeutsch", "In welchem Alter hast du angefangen, Deutsch zu lernen?")
+         .settings.css("font-size", "18px")
+         .settings.bold()
+        ,
+        newTextInput ("AlterDeutsch")
+        .size (200,20)
+        .log()
+        ,
+         
+     newCanvas("SprachenA", 1000, 40)
+     .settings.add (150,0, getText ("AlterDeutsch"))
+     .settings.add (670,0, getTextInput ("AlterDeutsch"))
+     .color ("white")
+     .print()
+     .center(),
+    
+ newText ("HäufigkeitDe", "<b>Wie häufig nutzt du Deutsch in den folgenden Bereichen?</b><br><small>Bitte wähle einen Punkt auf der Skala aus.</small>")
+ ,
+ newText ("HäufigkeitHeri", "<b>Wie häufig nutzt du diese Sprache in den folgenden Bereichen?</b><br><small>Bitte wähle einen Punkt auf der Skala aus.</small>")
+ ,
+ newText ("HäufigkeitE", "<b>Wie häufig nutzt du Englisch in den folgenden Bereichen?</b><br><small>Bitte wähle einen Punkt auf der Skala aus.</small>")
+ ,
+  
+ newScale ("HäufigkeitDeBeiträgelesen", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+ newScale ("HäufigkeitDeBeiträgeschreiben", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+ newScale ("HäufigkeitDeVideos", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+ newScale ("HäufigkeitHeriBeiträgelesen", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+ newScale ("HäufigkeitHeriBeiträgeschreiben", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+ newScale ("HäufigkeitHeriVideos", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+     newScale ("HäufigkeitEBeiträgelesen", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+ newScale ("HäufigkeitEBeiträgeschreiben", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+ newScale ("HäufigkeitEVideos", "----1", "----2", "----3", "----4", "---5")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("sehr selten"))
+         .settings.after (newText ("sehr oft"))
+         .log ("final")
+         .center()
+         ,
+  newText ("Deutsch", "Medienkonsum und Social Media auf Deutsch:")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+  newText ("Heri", "Medienkonsum und Social Media auf dieser Sprache:")
+  .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+      newText ("Englisch", "Medienkonsum und Social Media auf Englisch:")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newTextInput ("SpracheHeriIn")
+     .settings.size (270,20)
+     .log(),
+     newText ("DeBeiträgelesen", "Beiträge lesen")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("DeBeiträgeschreiben", "Beiträge schreiben")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("DeVideos", "Videos anschauen")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+ 
+   newCanvas ("DeutschCanvas", 1000,260)
+   .color ("white")
+   .settings.add (150,20,getText("Deutsch"))
+   .settings.add (150,50,getText ("HäufigkeitDe"))
+   .settings.add (150,100, getText ("DeBeiträgelesen"))
+   .settings.add (150,130, getText ("DeBeiträgeschreiben"))
+   .settings.add (150,160, getText ("DeVideos"))
+   .settings.add (370,100,getScale ("HäufigkeitDeBeiträgelesen"))
+   .settings.add (370,130,getScale ("HäufigkeitDeBeiträgeschreiben"))
+   .settings.add (370,160,getScale ("HäufigkeitDeVideos"))
+   .center()
+   .print()
+  , 
+  
+  newText ("SpracheHeri", "Bist du mit einer weiteren Sprache in der Familie aufgewachsen?")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("SpracheHeriWelche", "Wenn ja, welche?</br>")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newDropDown ("AndereSprachenDrop", "Bitte auswählen")
+         .settings.add ("Ja", 
+         "Nein")
+         .log()
+ , 
+ newCanvas ("SprachenCanvasHeri", 1000,50)
+   .settings.add (150,0,getText("SpracheHeri"))
+   .settings.add (670,0, getDropDown ("AndereSprachenDrop"))
+   .settings.add (150,30, getText ("SpracheHeriWelche"))
+   .settings.add (670,30, getTextInput ("SpracheHeriIn"))
+   .center()
+   .print()
+   , 
+     newText ("HeriBeiträgelesen", "Beiträge lesen")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("HeriBeiträgeschreiben", "Beiträge schreiben")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("HeriVideos", "Videos anschauen")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+ newCanvas ("HeriCanvas", 1000,240)
+   .settings.add (150,30,getText("Heri"))
+   .settings.add (150,70,getText ("HäufigkeitHeri"))
+   .settings.add (150,120, getText ("HeriBeiträgelesen"))
+   .settings.add (150,150, getText ("HeriBeiträgeschreiben"))
+   .settings.add (150,180, getText ("HeriVideos"))
+   .settings.add (370,120,getScale ("HäufigkeitHeriBeiträgelesen"))
+   .settings.add (370,150,getScale ("HäufigkeitHeriBeiträgeschreiben"))
+   .settings.add (370,180,getScale ("HäufigkeitHeriVideos"))
+   .center()
+   .print()
+   , 
+   newText ("EnglischBeiträgelesen", "Beiträge lesen")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("EnglischBeiträgeschreiben", "Beiträge schreiben")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("EnglischVideos", "Videos anschauen")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newCanvas ("EnglischCanvas", 1000,240)
+   .settings.add (150,30,getText("Englisch"))
+   .settings.add (150,70,getText ("HäufigkeitE"))
+   .settings.add (150,120, getText ("EnglischBeiträgelesen"))
+   .settings.add (150,150, getText ("EnglischBeiträgeschreiben"))
+   .settings.add (150,180, getText ("EnglischVideos"))
+   .settings.add (370,120,getScale ("HäufigkeitEBeiträgelesen"))
+   .settings.add (370,150,getScale ("HäufigkeitEBeiträgeschreiben"))
+   .settings.add (370,180,getScale ("HäufigkeitEVideos"))
+   .center()
+   .print()
+   , 
+     newButton ("Weiter", "Weiter"),
+ 
+                    
+ newCanvas ("ButtonCanvas", 1000,70)
+ .settings.add (450,0, getButton ("Weiter"))
+ .color ("white")
+ .center()
+ .print()
+ ,
+ getButton ("Weiter")
+ .wait()
+ );
+ // Metadaten 3 Weitere Sprachkenntnisse 
+ PennController("Meta3",
+     newImage("HU","HU-Logo.jpeg")  
+             .size(90,90)
+          ,
+         newImage("RUEG","dfg_rueg_header.jpg")
+             .size(220,60)
+         ,newImage ("DFG", "DFG-logo.jpeg")
+             .size (140,65)
+         ,
+          newCanvas("Logosnebeneinander",1138,120) //bildet den Header mit Logos
+             .add(230,0, getImage("HU"))
+             .add(450,15, getImage("RUEG"))
+             .add(770,15, getImage("DFG"))
+             .color ("white")
+             .center()
+             .print()
+         ,
+  
+     newFunction( () => window.scrollTo(0,0) ).call()
+     ,
+ newText ("WeitereSprachen", "Hast du weitere Sprachkenntnisse?") 
+  .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+ newText ("errordrop", "Bitte auswählen")
+  .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden (),
+  newText ("KeineWeitere", "Bitte scrolle nach unten, um weiter zu kommen.")
+  .settings.css ("font-size", "14px")
+  .color ("red")
+  .settings.hidden (),
+  newDropDown ("WeitereSprachenDrop", "Bitte auswählen")
+  .settings.add ("Ja", 
+         "Nein")
+         .log()
+            ,
+ newCanvas ("WeitereSprachen", 1000,50)
+ .center()
+ .settings.add (150,0, getText ("WeitereSprachen"))
+ .settings.add (780,0, getText ("errordrop"))
+ .settings.add (600,30, getText ("KeineWeitere"))
+ .settings.add (600,0, getDropDown ("WeitereSprachenDrop"))
+ .color ("white")
+ .print()
+ ,
+ getDropDown ("WeitereSprachenDrop")
+ .settings.callback(getDropDown ("WeitereSprachenDrop").test.selected ("Nein")
+ .success (getText ("KeineWeitere").settings.visible())),
+ 
+ newText ("HäufigkeitWeiterA", "<b>Wie häufig nutzt du diese Sprache?</b><br><small>Bitte wähle einen Punkt auf der Skala aus.</small>")
+ ,
+ newText ("HäufigkeitWeiterB", "<b>Wie häufig nutzt du diese Sprache?</b><br><small>Bitte wähle einen Punkt auf der Skala aus.</small>")
+ ,
+ newText ("HäufigkeitWeiterC", "<b>Wie häufig nutzt du diese Sprache?</b><br><small>Bitte wähle einen Punkt auf der Skala aus.</small>")
+ ,
+ newText ("HäufigkeitWeiterD", "<b>Wie häufig nutzt du diese Sprache?</b><br><small>Bitte wähle einen Punkt auf der Skala aus.</small>")
+ ,
+ newText ("HäufigkeitWeiterE", "<b>Wie häufig nutzt du diese Sprache?</b><br><small>Bitte wähle einen Punkt auf der Skala aus.</small>")
+ ,
+  
+ newScale ("HäufigkeitWeiterAV", "----1", "----2", "----3")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("selten"))
+         .settings.after (newText ("oft"))
+         .log ("final")
+         .center()
+         
+         ,
+ newScale ("HäufigkeitWeiterBV", "----1", "----2", "----3")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("selten"))
+         .settings.after (newText ("oft"))
+         .log ("final")
+         .center()
+         ,
+     newScale ("HäufigkeitWeiterCV", "----1", "----2", "----3")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("selten"))
+         .settings.after (newText ("oft"))
+         .log ("final")
+         .center()
+         ,
+  newScale ("HäufigkeitWeiterDV", "----1", "----2", "----3")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("selten"))
+         .settings.after (newText ("oft"))
+         .log ("final")
+         .center()
+         ,
+  newScale ("HäufigkeitWeiterEV", "----1", "----2", "----3")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+         .settings.labelsPosition("bottom").color("white")
+         .settings.before (newText ("selten"))
+         .settings.after (newText ("oft"))
+         .log ("final")
+         .center()
+         ,
+     newText ("WeiterA", "Welche Sprache?")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("errorWeiterA", "Bitte Sprache angeben")
+     .settings.css ("font-size", "14px")
+    .color ("red")
+    .settings.hidden (),
+     newText ("WeiterB", "Weitere Sprache")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("WeiterC", "Weitere Sprache")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("WeiterD", "Weitere Sprache")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newText ("WeiterE", "Weitere Sprache")
+     .settings.css("font-size", "18px")
+         .settings.bold()
+         .center(),
+     newTextInput ("SpracheWeiterAIn")
+     .settings.size (290,20)
+     .log(),
+     newTextInput ("SpracheWeiterBIn")
+     .settings.size (290,20)
+     .log(),
+     newTextInput ("SpracheWeiterCIn")
+     .settings.size (290,20)
+     .log(),
+     newTextInput ("SpracheWeiterDIn")
+     .settings.size (290,20)
+     .log(),
+     newTextInput ("SpracheWeiterEIn")
+     .settings.size (290,20)
+     .log(),
+  
+     
+     
+ newCanvas ("WeitereSprachenCanvasA", 1000,120)
+   .settings.add (150,20,getText("WeiterA"))
+   .settings.add (350,20, getTextInput ("SpracheWeiterAIn"))
+   .settings.add (600,20, getText ("errorWeiterA"))
+   .settings.add (150,50,getText ("HäufigkeitWeiterA"))
+   .settings.add (450,53,getScale ("HäufigkeitWeiterAV"))
+   .color ("white")
+   .center()
+   .print()
+   ,
+   newCanvas ("WeitereSprachenCanvasB", 1000,120)
+   .settings.add (150,20,getText("WeiterB"))
+   .settings.add (350,20, getTextInput ("SpracheWeiterBIn"))
+   .settings.add (150,50,getText ("HäufigkeitWeiterB"))
+   .settings.add (450,53,getScale ("HäufigkeitWeiterBV"))
+   .color ("white")
+   .center()
+   .print()
+   ,
+  newCanvas ("WeitereSprachenCanvasC", 1000,120)
+   .settings.add (150,20,getText("WeiterC"))
+   .settings.add (350,20, getTextInput ("SpracheWeiterCIn"))
+   .settings.add (150,50,getText ("HäufigkeitWeiterC"))
+   .settings.add (450,53,getScale ("HäufigkeitWeiterCV"))
+   .color ("white")
+   .center()
+   .print()
+   ,
+ newCanvas ("WeitereSprachenCanvasD", 1000,120)
+   .settings.add (150,20,getText("WeiterD"))
+   .settings.add (350,20, getTextInput ("SpracheWeiterDIn"))
+   .settings.add (150,50,getText ("HäufigkeitWeiterD"))
+   .settings.add (450,53,getScale ("HäufigkeitWeiterDV"))
+   .color ("white")
+   .center()
+   .print()
+   ,
+ newCanvas ("WeitereSprachenCanvasE", 1000,170)
+   .settings.add (150,20,getText("WeiterE"))
+   .settings.add (350,20, getTextInput ("SpracheWeiterEIn"))
+   .settings.add (150,50,getText ("HäufigkeitWeiterE"))
+   .settings.add (450,53,getScale ("HäufigkeitWeiterEV"))
+   .color ("white")
+   .center()
+   .print()
+   ,
+  newText ("Dialekt", "<b> Bist du mit einem Dialekt vertraut? </br> </b> <small> Wenn ja, welcher? </small>")
+  .settings.css ("font-size", "18px")
+  .center()
+  ,
+  newTextInput ("DialektIn")
+  .size (290,20)
+  .log()
+  ,
+  newText("Email","<b>Dürften wir dich in Zukunft erneut kontaktieren?</b><br> <small>Wenn ja, bitte Emailadresse angeben.<br> </br> Die Angabe der Kontaktdaten ist freiwillig. </br> Um Anonymität zu gewährleisten, wird diese Angabe getrennt vom ausgefüllten Fragebogen archiviert.</small> ")
+  .settings.css ("font-size", "18px")
+  .center()
+  ,
+  newTextInput ("EmailIn")
+  .size (290,20)
+  .log()
+  ,
+  newCanvas ("DialektEmail", 1000, 230)
+  .settings.add (150,0, getText ("Dialekt"))
+  .settings.add (550,0, getTextInput ("DialektIn"))
+  .settings.add (150, 90, getText ("Email"))
+  .settings.add (550, 90, getTextInput ("EmailIn"))
+  .center()
+  .print()
+     ,
+ newButton ("Weiter", "Experiment beenden und Daten abschicken.")
+ .settings.css ("font-size", "16px"),
+ newCanvas ("ButtonCanvas", 1000,80)
+ .settings.add (350,0, getButton ("Weiter"))
+ .color ("white")
+ .center()
+ .print()
+ ,
+ getButton ("Weiter")
+ .wait(
+     newFunction('dummy', ()=>true).test.is(true)
+     .and(getDropDown ("WeitereSprachenDrop").test.selected ()
+     .failure (getText ("errordrop").settings.visible()))
+     ),
+     getDropDown("WeitereSprachenDrop").wait("first")
+  ); 
 //Feedback-Fragebogen 
 PennController("Feedback",
    newImage("HU","HU-Logo.jpeg")  
@@ -1123,6 +1417,7 @@ PennController("Feedback",
             .add(240,10, getImage("HU"))
             .add(380,10, getImage("RUEG"))
             .add(720,15, getImage("DFG"))
+            .color ("white")
             .center()
             .print()
             ,   
