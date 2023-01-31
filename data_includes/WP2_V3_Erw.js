@@ -241,7 +241,7 @@ newText ("Heading-Beispiel",  "<b>Gesprächssituation</b>")
               .center()
               .size(300,450)
          ,
-       newText("Beispiel","<br> Hier siehst du die Bilder, die sie gemacht hat. Gleich hörst du dazu einige Sätze der Unterhaltung. </br> <br> Deine Aufgabe besteht darin, diese Sätze zu bewerten.</br> <br> Zu jedem Bild werden mehrere Sätze abgespielt. Nach jedem Satz wollen wir wissen:</br> <br> <b>Wie natürlich empfindest Du den Satz? </b> </br><br>Jetzt gibt es einen Probedurchlauf. </br></p>")
+       newText("Beispiel","Hier siehst du die Bilder, die sie gemacht hat. Gleich hörst du dazu einige Sätze der Unterhaltung. </br> <br> Deine Aufgabe besteht darin, diese Sätze zu bewerten.</br> <br> Zu jedem Bild werden mehrere Sätze abgespielt. Nach jedem Satz wollen wir wissen:</br> <br> <b>Wie natürlich empfindest Du den Satz? </b> </br><br>Jetzt gibt es einen Probedurchlauf. </br></p>")
              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
               .center()
        
@@ -254,7 +254,7 @@ newText ("Heading-Beispiel",  "<b>Gesprächssituation</b>")
            .add( 0, 0, getImage("Kuhbild"))
            .add (350,0, getText ("Heading-Beispiel"))
            .add (350,40, getText ("Beispiel"))
-           .add (350,480, getButton ("Weiter"))
+           .add (350,425, getButton ("Weiter"))
            .print()
        ,
    getButton("Weiter").wait( )
@@ -325,17 +325,25 @@ PennController ("Probedurchlauf",
        .log ("item", row.item)
        ); 
 
-PennController ("Los",
+       PennController ("Los",
 
-       newText ("Probe","<br> </br> <p> <b>Sehr gut!</b> </br> <br> Vergiss bitte nicht, dass du manchmal dazu aufgefordert wirst, Fragen zu einigen Sätzen zu beantworten. </br> <br> Klicke auf &quot;Start&quot;, um mit der Studie zu beginnen. </br></p>")
+       newText ("Probe","<br> </br> <p> <b>Sehr gut! </b> </br> <br> Vergiss bitte nicht, dass du manchmal dazu aufgefordert wirst, </br>Fragen zu einigen Sätzen zu beantworten. </br> <br> Klicke auf &quot;Start&quot;, um mit der Studie zu beginnen. </br></p>")
        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
-       .settings.center()
-       .print()
        ,
        newButton("Weiter", "Start")
         .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-       .settings.center()
-           .print()
+        .settings.bold ()
+            ,
+    newCanvas ("LosCanvas",1000,260)
+            .settings.add (250,0,getText ("Probe"))
+            .settings.add (250,230,getButton ("Weiter"))
+            .center()
+            .color ("white")
+            .print()
+            
+            ,
+        
+    getButton ("Weiter")
             .wait()
        );
         
