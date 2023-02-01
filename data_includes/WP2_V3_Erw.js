@@ -200,7 +200,7 @@ PennController ("Einleitung",
                .size(600,400)
                .center()
    ,
-           newText("Einleitung","<p> <br> <b> Stell Dir folgende Situation vor: </b> </br> <br> Zwei Freundinnen haben sich lange nicht mehr gesehen und treffen sich in einem Café. Sie trinken gemeinsam einen Kaffee und unterhalten sich dabei. </br> <br> Die eine Freundin war gerade im Urlaub und erzählt der anderen, was sie dort erlebt hat. </br> <br> Ab und zu zeigt sie der Freundin Fotos vom Urlaub auf ihrem Handy, um ihre Geschichte zu veranschaulichen. </br> </p>")
+           newText("Einleitung","<p> <br> <b> Stell dir folgende Situation vor: </b> </br> <br> Zwei Freundinnen haben sich lange nicht mehr gesehen und treffen sich in einem Café. Sie trinken gemeinsam einen Kaffee und unterhalten sich dabei. </br> <br> Die eine Freundin war gerade im Urlaub und erzählt der anderen, was sie dort erlebt hat. </br> <br> Ab und zu zeigt sie der Freundin Fotos vom Urlaub auf ihrem Handy, um ihre Geschichte zu veranschaulichen. </br> </p>")
              .settings.css("font-family", "calibri").settings.css("font-size", "18px")
              .size (500,400)
               .center()
@@ -357,7 +357,7 @@ PennController ("Probedurchlauf",
                    .size(600,400)
                    .center()
        ,
-               newText("Einleitung","<p> <br> <b> Stell Dir folgende Situation vor: </b> </br> <br> Zwei Freundinnen haben sich lange nicht mehr gesehen und treffen sich in einem Café. Sie trinken gemeinsam einen Kaffee und unterhalten sich dabei. </br> <br> Die eine Freundin war gerade im Urlaub und erzählt der anderen, was sie dort erlebt hat. </br> <br> Ab und zu zeigt sie der Freundin Fotos vom Urlaub auf ihrem Handy, um ihre Geschichte zu veranschaulichen. </br> </p>")
+               newText("Einleitung","<p> <br> <b> Stell dir folgende Situation vor: </b> </br> <br> Zwei Freundinnen haben sich lange nicht mehr gesehen und treffen sich in einem Café. Sie trinken gemeinsam einen Kaffee und unterhalten sich dabei. </br> <br> Die eine Freundin war gerade im Urlaub und erzählt der anderen, was sie dort erlebt hat. </br> <br> Ab und zu zeigt sie der Freundin Fotos vom Urlaub auf ihrem Handy, um ihre Geschichte zu veranschaulichen. </br> </p>")
                  .settings.css("font-family", "calibri").settings.css("font-size", "18px")
                  .size (500,400)
                   .center()
@@ -660,7 +660,7 @@ PennController ("Probedurchlauf",
            ); 
    PennController ("Ende",
        
-       newText ("Danke", "<p align=center > <br> <b>Vielen Dank!</b></br></p> <p><br> Jetzt bitten wir Dich, einen Fragebogen auszufüllen, der uns bei der Auswertung unserer Studie helfen wird. </br> <br> Hier fragen wir Dich nach einigen persönlichen Angaben (z.B. Alter, Ausbildung) sowie Informationen zu Deinen Sprachkenntnissen und Deinem persönlichen Sprachgebrauch.</br> <br> </br> </p>" )
+       newText ("Danke", "<p align=center > <br> <b>Vielen Dank!</b></br></p> <p><br> Jetzt bitten wir dich, einen Fragebogen auszufüllen, der uns bei der Auswertung unserer Studie helfen wird. </br> <br> Hier fragen wir dich nach einigen persönlichen Angaben (z.B. Alter, Ausbildung) sowie Informationen zu deinen Sprachkenntnissen und deinem persönlichen Sprachgebrauch.</br> <br> </br> </p>" )
        .settings.css ("font-size", "18px")
        .center()
        .print()
@@ -705,10 +705,15 @@ PennController ("Probedurchlauf",
            .settings.css("font-size", "18px")
            .settings.bold()
            .center(),
-       newDropDown("IdentityDrop", "Bitte wähle eine Option aus")
+       newDropDown("IdentityDrop", "Bitte auswählen")
            .settings.add("Divers", "Weiblich", "Männlich")
-           .settings.size (340,20)
+           .settings.size (150,20)
            .log(),
+    newTextInput ("IdentityIn")
+           .settings.size (170,20)
+           .log()
+           .settings.hidden()
+           ,
        newText("Wohnort", "Aktueller Wohnort")
            .settings.css("font-size", "18px")
            .settings.bold()
@@ -719,9 +724,8 @@ PennController ("Probedurchlauf",
            .center(),
        newTextInput("WohnortIn").log(), 
        newTextInput("SeitWohnortIn").log(), 
-       newText("Geburtsort", "Geburtsort")
-           .settings.css("font-size", "18px")
-           .settings.bold(),
+       newText("Geburtsort", "<b>Geburtsort</b> </br> <small>Bitte Land, Stadt angeben.<small>")
+       .settings.css("font-size", "18px"),
        newTextInput ("GeburtIn").log(),
        newText("AndereOrte", "<br><b>Falls zutreffend, gib bitte vorherige Wohnorte an. Welche Lebensjahre hast du dort verbracht? </br> </b> <small> Bitte Land, Stadt angeben. </small> </br>")
            .settings.css("font-size", "18px")
@@ -860,6 +864,7 @@ PennController ("Probedurchlauf",
            .settings.add (150,20, getText ("errorAlter"))
            .settings.add(150,50, getText("Geschlechtsidentität"))
            .settings.add(600,50, getDropDown("IdentityDrop"))
+           .settings.add (770,50, getTextInput ("IdentityIn"))
            .settings.add (150,70, getText ("errorIdentity"))
            .settings.add(150,100, getText("Wohnort"))
            .settings.add(600,100, getTextInput("WohnortIn"))
@@ -904,7 +909,11 @@ PennController ("Probedurchlauf",
        .center()
        .print()
        ,
-       
+       getDropDown ("IdentityDrop")
+       .settings.callback(getDropDown ("IdentityDrop")
+       .test.selected ("Divers")
+       .success (getTextInput ("IdentityIn").settings.visible()))
+       ,
        newButton ("Weiter", "Weiter")
        .center()
       ,
