@@ -327,7 +327,7 @@ PennController ("Probedurchlauf",
 
        PennController ("Los",
 
-       newText ("Probe","<br> </br> <p> <b>Sehr gut! </b> </br> <br> Vergiss bitte nicht, dass du manchmal dazu aufgefordert wirst, </br>Fragen zu einigen Sätzen zu beantworten. </br> <br> Klicke auf &quot;Start&quot;, um mit der Studie zu beginnen. </br></p>")
+       newText ("Probe","<br> </br> <p> <b>Das war der Probedurchlauf! </b> </br> <br> Vergiss bitte nicht, dass du manchmal dazu aufgefordert wirst, </br>Fragen zu einigen Sätzen zu beantworten. </br> <br> Klicke auf &quot;Start&quot;, um mit der Studie zu beginnen. </br></p>")
        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
        ,
        newButton("Weiter", "Start")
