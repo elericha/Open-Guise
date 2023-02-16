@@ -241,7 +241,7 @@ newText ("Heading-Beispiel",  "<b>Gesprächssituation</b>")
               .center()
               .size(300,450)
          ,
-       newText("Beispiel","Hier siehst du die Bilder, die sie gemacht hat. Gleich hörst du dazu einige Sätze der Unterhaltung. </br> <br> Deine Aufgabe besteht darin, diese Sätze zu bewerten.</br> <br> Zu jedem Bild werden mehrere Sätze abgespielt. Nach jedem Satz wollen wir wissen:</br> <br> <b>Wie natürlich empfindest Du den Satz? </b> </br><br>Jetzt gibt es einen Probedurchlauf. </br></p>")
+       newText("Beispiel","Hier siehst du die Bilder, die sie gemacht hat. Gleich hörst du dazu einige Sätze der Unterhaltung. </br> <br> Deine Aufgabe besteht darin, diese Sätze zu bewerten.</br> <br> Zu jedem Bild werden mehrere Sätze abgespielt. Nach jedem Satz wollen wir wissen:</br> <br> <b>Wie natürlich empfindest du den Satz? </b> </br><br>Jetzt gibt es einen Probedurchlauf. </br></p>")
              .settings.css("font-family", "calibri").settings.css("font-size", "20px")
               .center()
        
@@ -260,71 +260,81 @@ newText ("Heading-Beispiel",  "<b>Gesprächssituation</b>")
    getButton("Weiter").wait( )
    );
 
-Template ("probe.csv", row =>
+   Template ("probe.csv", row =>
 
-PennController ("Probedurchlauf",
-
-       newText ("Anleitung", "<br><b>Schritt 1:</b> Klicke den Play-Button, um den  Satz anzuhören.</br> <br> </br>")
-       .settings.css ("font-size", "18px")
-       .center()
-       .unfold(2000)
-       ,
-
-       newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
-              .center()
-         ,
-      newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
-              .center()
-              .size(300,450)
-         ,
-       newText("Bewertung","<p><br><b>Schritt 2:</b> Bitte den angehörten Satz bewerten.</br> <b> <br> Wie natürlich empfindest du den Satz? </b> </br> <br> Bitte auf der Skala einen Wert anklicken. </br> <br> </br> </p>")
-             .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-              .center()
-       ,
-        newScale("Skala1", 7)
-        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
-         .settings.labelsPosition("bottom").color("white")
-             
-       .settings.before(newText("labelleft","<em>vollkommen</br>natürlich"))
-       .settings.after(newText("labelright","<em>vollkommen</br> unnatürlich</em>"))
-          .log ("all")
-         .center()
+   PennController ("Probedurchlauf",
+   
+          newText ("Anleitung", "<br><b>Schritt 1:</b> Klicke den Play-Button, um den  Satz anzuhören.</br> <br> </br>")
+          .settings.css ("font-size", "18px")
+          .center()
+          .unfold(2000)
           ,
-
-       newText ("counter", row.Anzahl)
-       .settings.css ("font-size", "18px")
-       .settings.css("")
-       ,
-       newButton("Weiter", "Weiter")
-        .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-       .settings.center()
-       ,
-       newCanvas ("Durchlauf", 1500,500)
-           .add( 0, 0, getImage("Image"))
-           .add (350,0, getText ("counter"))
-           .add( 350, 50, getAudio("Audio"))
-           .add (350,100, getText ("Bewertung"))
-           .add (350,330, getScale ("Skala1"))
-           .add (350,420, getButton ("Weiter"))
-           .print()
-       ,
-   getButton("Weiter").wait(
-      getScale("Skala1").test.selected()
-             .failure( newText('errorage', "<br>Bitte Punkt auf der Skala wählen.").color("red") .center().print() )
-              .and(
-             getAudio("Audio").test.hasPlayed()
-                 .failure( newText('errorplay', "<br>Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
-                 .color("red") 
+   
+          newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
                  .center()
-                 .print() )))
-                 
-               
+            ,
+         newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
+                 .center()
+                 .size(300,450)
+            ,
+          newText("Bewertung","<p><br><b>Schritt 2:</b> Bitte den angehörten Satz bewerten.</br> <b> <br> Wie natürlich empfindest du den Satz? </b> </br> <br> Bitte auf der Skala einen Wert anklicken. </br> <br> </br> </p>")
+                .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+                 .center()
+          ,
+          newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+              .color("red") 
+              .center()
+              .hidden()
+          ,
+          newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
+                    .color("red") 
+                    .center()
+                    .hidden ()
+                    ,
+           newScale("Skala1", 7)
+           .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+            .settings.labelsPosition("bottom").color("white")
+                
+          .settings.before(newText("labelleft","<em>vollkommen</br>natürlich"))
+          .settings.after(newText("labelright","<em>vollkommen</br> unnatürlich</em>"))
+             .log ("all")
+            .center()
+             ,
+   
+          newText ("counter", row.Anzahl)
+          .settings.css ("font-size", "18px")
+          .settings.css("")
+          ,
+          newButton("Weiter", "Weiter")
+           .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+          .settings.center()
+          ,
+          newCanvas ("Durchlauf", 1500,500)
+              .add( 0, 0, getImage("Image"))
+              .add (350,0, getText ("counter"))
+              .add( 350, 50, getAudio("Audio"))
+              .add (450,390, getText ("erroraudio"))
+              .add (450,440, getText ("errorscale"))
+              .add (350,100, getText ("Bewertung"))
+              .add (350,330, getScale ("Skala1"))
+              .add (350,420, getButton ("Weiter"))
+              .print()
+          ,
+      getButton("Weiter").wait(
+         getScale("Skala1").test.selected()
+                .failure( getText("errorscale").settings.visible())
+                 .and(
+                getAudio("Audio").test.hasPlayed()
+                    .failure( getText("erroraudio").settings.visible ())))
+                    
+                  
+          
+          )
+          .log ("Audio", row.Audio)
+          .log ("item", row.item)
+          ); 
        
-       )
-       .log ("Audio", row.Audio)
-       .log ("item", row.item)
-       ); 
-
+//Zwischenstopp zwischen Probe und Hauptteil 
        PennController ("Los",
 
        newText ("Probe","<br> </br> <p> <b>Das war der Probedurchlauf! </b> </br> <br> Vergiss bitte nicht, dass du manchmal dazu aufgefordert wirst, </br>Fragen zu einigen Sätzen zu beantworten. </br> <br> Klicke auf &quot;Start&quot;, um mit der Studie zu beginnen. </br></p>")
@@ -346,7 +356,7 @@ PennController ("Probedurchlauf",
     getButton ("Weiter")
             .wait()
        );
-        
+    //Hauptteil
        PennController ("EinleitungStudie",
 
        newText ("Heading-Einleitung",  "<p><b>Gesprächssituation</b></p>")
@@ -385,7 +395,7 @@ PennController ("Probedurchlauf",
                       
           
            );
-           
+    //Studie Teil 1        
    Template ("OGaudios.csv", row =>
    
    PennController ("Studie",
@@ -407,6 +417,16 @@ PennController ("Probedurchlauf",
                  .settings.css("font-family", "calibri").settings.css("font-size", "18px")
                   .center()
            ,
+        newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+              .color("red") 
+              .center()
+              .hidden()
+          ,
+          newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
+                    .color("red") 
+                    .center()
+                    .hidden ()
+                    ,
             newScale("Skala1", 7)
             .settings.css("font-family", "calibri").settings.css("font-size", "20px")
              .settings.labelsPosition("bottom").color("white")
@@ -431,27 +451,24 @@ PennController ("Probedurchlauf",
                .add( 350, 50, getAudio("Audio"))
                .add (350,100, getText ("Bewertung"))
                .add (350,300, getScale ("Skala1"))
+               .add (450,390, getText ("erroraudio"))
+               .add (450,440, getText ("errorscale"))
                .add (350,420, getButton ("Weiter"))
                .print()
            ,
-       getButton("Weiter").wait(
-          getScale("Skala1").test.selected()
-                 .failure( newText('errorage', "<br>Bitte Punkt auf der Skala wählen.").color("red") .center().print() )
-                  .and(
-                 getAudio("Audio").test.hasPlayed()
-                     .failure( newText('errorplay', "<br>Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
-                     .color("red") 
-                     .center()
-                     .print() )))
-                     
-                   
-           
-           )
-           .log ("Audio", row.Audio)
-           .log ("Group", row.Group)
-           .log ("item", row.item)
-           ); 
-   
+           getButton("Weiter").wait(
+            getScale("Skala1").test.selected()
+                   .failure( getText("errorscale").settings.visible())
+                    .and(
+                   getAudio("Audio").test.hasPlayed()
+                       .failure( getText("erroraudio").settings.visible ())))
+             )
+              .log ("Audio", row.Audio)
+              .log ("Group", row.Group)
+              .log ("item", row.item)
+              ); 
+   // Aufmerksamkeitstest 1: Zelten 
+
    PennController ("AufmerksamkeitZelten",
        newText ("Frage", "<br>Bitte beantworte kurz die folgende Frage:</br> <br> </br>")
            .settings.css ("font-size", "18px")
@@ -488,7 +505,7 @@ PennController ("Probedurchlauf",
                    ) 
                      
    );
-   
+   // Studie Teil 2 
    Template ("OGaudios2.csv", row =>
    
    PennController ("Studie2",
@@ -510,6 +527,16 @@ PennController ("Probedurchlauf",
                  .settings.css("font-family", "calibri").settings.css("font-size", "18px")
                   .center()
            ,
+           newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+           .color("red") 
+           .center()
+           .hidden()
+       ,
+       newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
+                 .color("red") 
+                 .center()
+                 .hidden ()
+                 ,
               newScale("Skala1", 7)
                .settings.css("font-family", "calibri").settings.css("font-size", "20px")
                .settings.labelsPosition("bottom").color("white")
@@ -532,26 +559,23 @@ PennController ("Probedurchlauf",
                .add( 350, 50, getAudio("Audio"))
                .add (350,100, getText ("Bewertung"))
                .add (350,300, getScale ("Skala1"))
+               .add (450,390, getText ("erroraudio"))
+               .add (450,440, getText ("errorscale"))
                .add (350,420, getButton ("Weiter"))
                .print()
            ,
-       getButton("Weiter").wait(
-          getScale("Skala1").test.selected()
-                 .failure( newText('errorage', "<br>Bitte Punkt auf der Skala wählen.").color("red") .center().print() )
-                  .and(
-                 getAudio("Audio").test.hasPlayed()
-                     .failure( newText('errorplay', "<br>Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
-                     .color("red") 
-                     .center()
-                     .print() )))
-                     
-                   
-           
-           )
-           .log ("Audio", row.Audio)
-           .log ("Group", row.Group)
-           .log ("item", row.item)
-           );
+           getButton("Weiter").wait(
+            getScale("Skala1").test.selected()
+                   .failure( getText("errorscale").settings.visible())
+                    .and(
+                   getAudio("Audio").test.hasPlayed()
+                       .failure( getText("erroraudio").settings.visible ())))
+             )
+              .log ("Audio", row.Audio)
+              .log ("Group", row.Group)
+              .log ("item", row.item)
+              ); 
+    // Aufmerksamkeitstest 2: Hotel 
    PennController ("AufmerksamkeitHotel",
        newText ("Frage", "<br>Bitte beantworte kurz die folgende Frage:</br> <br> </br>")
            .settings.css ("font-size", "18px")
@@ -614,6 +638,16 @@ PennController ("Probedurchlauf",
                  .settings.css("font-family", "calibri").settings.css("font-size", "18px")
                   .center()
            ,
+           newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+           .color("red") 
+           .center()
+           .hidden()
+       ,
+       newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
+                 .color("red") 
+                 .center()
+                 .hidden ()
+                 ,
             newScale("Skala1", 7)
             .settings.css("font-family", "calibri").settings.css("font-size", "20px")
              .settings.labelsPosition("bottom").color("white")
@@ -638,26 +672,24 @@ PennController ("Probedurchlauf",
                .add( 350, 50, getAudio("Audio"))
                .add (350,100, getText ("Bewertung"))
                .add (350,300, getScale ("Skala1"))
+               .add (450,390, getText ("erroraudio"))
+               .add (450,440, getText ("errorscale"))
                .add (350,420, getButton ("Weiter"))
                .print()
            ,
-       getButton("Weiter").wait(
-          getScale("Skala1").test.selected()
-                 .failure( newText('errorage', "<br>Bitte Punkt auf der Skala wählen.").color("red") .center().print() )
-                  .and(
-                 getAudio("Audio").test.hasPlayed()
-                     .failure( newText('errorplay', "<br>Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
-                     .color("red") 
-                     .center()
-                     .print() )))
-                     
-                   
-           
-           )
-           .log ("Audio", row.Audio)
-           .log ("Group", row.Group)
-           .log ("item", row.item)
-           ); 
+           getButton("Weiter").wait(
+            getScale("Skala1").test.selected()
+                   .failure( getText("errorscale").settings.visible())
+                    .and(
+                   getAudio("Audio").test.hasPlayed()
+                       .failure( getText("erroraudio").settings.visible ())))
+             )
+              .log ("Audio", row.Audio)
+              .log ("Group", row.Group)
+              .log ("item", row.item)
+              ); 
+    // Ende der Studie und Überleitung zum Fragebogen 
+
    PennController ("Ende",
        
        newText ("Danke", "<p align=center > <br> <b>Vielen Dank!</b></br></p> <p><br> Jetzt bitten wir dich, einen Fragebogen auszufüllen, der uns bei der Auswertung unserer Studie helfen wird. </br> <br> Hier fragen wir dich nach einigen persönlichen Angaben (z.B. Alter, Ausbildung) sowie Informationen zu deinen Sprachkenntnissen und deinem persönlichen Sprachgebrauch.</br> <br> </br> </p>" )
@@ -671,6 +703,7 @@ PennController ("Probedurchlauf",
        .print ()
        .wait()
    );
+   // Fragebogen Meta 1 
    PennController ("Meta-Fragen1",
    newImage("HU","HU-Logo.jpeg")  
                .size(90,90)
@@ -1511,13 +1544,16 @@ PennController ("Probedurchlauf",
        getDropDown("WeitereSprachenDrop").wait("first")
     );   
 //Feedback-Fragebogen 
+
 PennController("Feedback",
+   
    newImage("HU","HU-Logo.jpeg")  
             .size(90,90)
          ,
         newImage("RUEG","dfg_rueg_header.jpg")
             .size(294,90)
-        ,newImage ("DFG", "DFG-logo.jpeg")
+           , 
+        newImage ("DFG", "DFG-logo.jpeg")
             .size (159,90)
         ,
          newCanvas("Logosnebeneinander",1138,140) //bildet den Header mit Logos
@@ -1530,9 +1566,10 @@ PennController("Feedback",
             ,   
         newText("Leerzeile"," <br></p>")
         .center()
-        .print()
+        .print() 
 ,
-       newText("getestet","<b>Was denkst Du, was wir in diesem Online-Experiment untersuchen wollen?</b><br>Es gibt keine falschen Antworten. Gib gerne ein Stichwort an.")
+
+       newText("getestet","<b>Was denkst du, was wir in diesem Online-Experiment untersuchen wollen?</b><br>Gib bitte ein Stichwort an.")
  //       .center()
         .print()
 ,
@@ -1540,9 +1577,14 @@ PennController("Feedback",
         .center()
         .print()
 ,
+newText ("errorgetestet", "Bitte ausfüllen.")
+.color ("red")
+.settings.hidden(),
+
     newTextInput("getestet")
  //       .center()
         .size(600,80)
+        .settings.after (getText ("errorgetestet"))
         .print()
 ,
     getTextInput("getestet")
@@ -1552,27 +1594,7 @@ newText("Leerzeile1"," <br></p>")
     .center()
     .print()
 ,
-    newText("Technik","<b> Hattest Du technische Schwierigkeiten beim Ablauf des Experiments?</b><br> Bitte kurz beschreiben.")
-  //      .center()
-        .print()
-,
-    newCanvas("Technik", 1, 10)
-//        .center()
-        .print()
-,
-    newTextInput("Technik")
-//        .center()
-        .size(600,80)
-        .print()
-,
-    getTextInput("Technik")
-        .log("final")
-               ,
-               newText("Leerzeile2"," <br></p>")
-                 .center()
-                .print()
-                 ,
-       newText("Sätze","<b>Ist Dir etwas an den angehörten Sätzen aufgefallen?</b><br> Irgendeine Art von Auffälligkeit.")
+       newText("Sätze","<b>Ist dir etwas an den angehörten Sätzen aufgefallen?</b><br> Irgendeine Art von Auffälligkeit.")
  //       .center()
         .print()
 ,
@@ -1580,9 +1602,14 @@ newText("Leerzeile1"," <br></p>")
  //       .center()
         .print()
 ,
+newText ("errorSätze", "Bitte ausfüllen.")
+.color ("red")
+.settings.hidden(),
+
     newTextInput("Sätze")
   //      .center()
         .size(600,80)
+   .settings.after (getText ("errorSätze"))
         .print()
 ,
     getTextInput("Sätze")
@@ -1593,7 +1620,7 @@ newText("Leerzeile1"," <br></p>")
                 .print()
                  ,
 
- newText("Setting","<b>Wie natürlich empfandest Du das Setting der Studie?</b><br> Konntest Du Dir die Gesprächssituation gut vorstellen?")
+ newText("Setting","<b>Wie natürlich empfandest du das Setting der Studie?</b><br> Konntest du dir die Gesprächssituation gut vorstellen?")
 //        .center()
         .print()
 ,
@@ -1601,10 +1628,14 @@ newText("Leerzeile1"," <br></p>")
  //       .center()
         .print()
 ,
+newText ("errorSetting", "Bitte ausfüllen.")
+.color ("red")
+.settings.hidden(),
 
     newTextInput("Setting")
  //       .center()
  .size(600,80)
+     .settings.after (getText ("errorSetting"))
         .print()
 ,
     getTextInput("Setting")
@@ -1614,7 +1645,32 @@ newText("Leerzeile4"," <br></p>")
                  .center()
                 .print()
                  ,
-newText("Sonstiges","<b>Ist Dir noch etwas aufgefallen?</b><b> Jedes Feedback ist hilfreich.")
+    newText("Technik","<b> Hattest du technische Schwierigkeiten beim Ablauf des Experiments?</b><br> Bitte kurz beschreiben.")
+  //      .center()
+        .print()
+,
+    newCanvas("Technik", 1, 10)
+//        .center()
+        .print()
+,
+newText ("errorTechnik", "Bitte ausfüllen.")
+.color ("red")
+.settings.hidden(),
+
+ newTextInput("Technik")
+//        .center()
+        .size(600,80)
+        .settings.after (getText ("errorTechnik"))
+        .print()
+,
+    getTextInput("Technik")
+        .log("final")
+               ,
+               newText("Leerzeile2"," <br></p>")
+                 .center()
+                .print()
+                 ,
+newText("Sonstiges","<b>Ist dir noch etwas aufgefallen?</b><b> Jedes Feedback ist hilfreich.")
 //        .center()
         .print()
 ,
@@ -1622,10 +1678,14 @@ newText("Sonstiges","<b>Ist Dir noch etwas aufgefallen?</b><b> Jedes Feedback is
  //       .center()
         .print()
 ,
+newText ("errorSonstiges", "Bitte ausfüllen.")
+.color ("red")
+.settings.hidden(),
 
     newTextInput("Sonstiges")
  //       .center()
         .size(600,80)
+        .settings.after (getText ("errorSonstiges"))
         .print()
 ,
     getTextInput("Sonstiges")
@@ -1640,10 +1700,24 @@ newText("Leerzeile5"," <br></p>")
                //.settings.center()
                .log()
                .center()
-               .print()
-               .wait()
- )
-;
+  ,
+  newCanvas ("ButtonCanvas", 1000,60)
+  .center()
+  .settings.add (300,0, getButton ("Ende"))
+  .print()
+  ,
+  getButton ("Ende")
+               .wait(
+        newFunction('dummy', ()=>true).test.is(true)
+       .and(getTextInput ("getestet").test.text(/^.+/)
+       .failure (getText ("errorgetestet").settings.visible()))
+       .and(getTextInput ("Sätze").test.text(/^.+/)
+       .failure (getText ("errorSätze").settings.visible()))
+       .and (getTextInput ("Setting").test.text(/^.+/)
+       .failure (getText ("errorSetting").settings.visible()))
+       ) 
+       ); 
+       
 //Geloggte Ergebnisse senden
 PennController.SendResults("send");
 
