@@ -13,10 +13,13 @@ PennController.Sequence("Info",
                         "EinleitungStudie",
                         "Studie",
                         "AufmerksamkeitZelten",
+                        "send",
                         "Studie2",
                         "AufmerksamkeitHotel",
+                        "send",
                         "Studie3",
                         "Ende",
+                        "send",
                         "Meta-Fragen1","Meta2", "Meta3", "Feedback","send","Final");
 PennController.DebugOff();
 var progressBarText = "Fortschritt";
@@ -401,74 +404,75 @@ getButton("Weiter").wait(
    
    PennController ("Studie",
    
-           newText ("Anleitung", "<br>Klicke den Play-Button, um den  Satz anzuhören.</br> <br> </br>")
-           .settings.css ("font-size", "18px")
-           .center()
-           .unfold(2000)
-           ,
    
-           newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
-                  .center()
-             ,
-          newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
-                  .center()
-                  .size(300,450)
-             ,
-             newText("Bewertung","<p><br> </br> <br><b>Schritt 2:</b> Bitte den angehörten Satz bewerten.</br> <br> Inwiefern stimmst du der folgenden Aussage zu? </br> </br> <nobr> <b> <br>Der Satz klingt wie etwas, das jemand so sagen würde. </b> </nobr> </br> </p>")
-             .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-              .center()
-            ,
-            newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+   newText ("Anleitung", "<br>Klicke den Play-Button, um den  Satz anzuhören.</br> <br> </br>")
+   .settings.css ("font-size", "18px")
+   .center()
+   .unfold(2000)
+   ,
+
+   newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
+          .center()
+     ,
+  newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
+          .center()
+          .size(300,450)
+     ,
+     newText("Bewertung","<p><br> </br> <br>Bitte den angehörten Satz bewerten.</br> <br> Inwiefern stimmst du der folgenden Aussage zu? </br> </br> <nobr> <b> <br>Der Satz klingt wie etwas, das jemand so sagen würde. </b> </nobr> </br> </p>")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+      .center()
+    ,
+    newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+        .color("red") 
+        .center()
+        .hidden()
+    ,
+    newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
                 .color("red") 
                 .center()
-                .hidden()
-            ,
-            newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
-                        .color("red") 
-                        .center()
-                        .hidden ()
-                        ,
-                newScale("Skala1", 7)
-                .settings.css("font-family", "calibri").settings.css("font-size", "20px")
-                .settings.labelsPosition("bottom").color("white")
-                    
-            .settings.before(newText("labelleft","<em><nobr>ich stimme</nobr> <nobr> vollkommen zu </nobr></em>"))
-            .settings.after(newText("labelright","<em><nobr>ich stimme</nobr> <nobr>überhaupt nicht zu</em></nobr>"))
-                .log ("all")
-                .center()
+                .hidden ()
                 ,
-   
-           newText ("counter", row.Anzahl)
-           .settings.css ("font-size", "18px")
-           .settings.css("")
-           ,
-           newButton("Weiter", "Weiter")
-            .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-           .settings.center()
-           ,
-           newCanvas ("Durchlauf", 1500,500)
-                .color ("white")
-               .add( 0, 0, getImage("Image"))
-               .add (350,0, getText ("counter"))
-               .add( 350, 50, getAudio("Audio"))
-               .add (350,100, getText ("Bewertung"))
-               .add (350,300, getScale ("Skala1"))
-               .add (450,390, getText ("erroraudio"))
-               .add (450,440, getText ("errorscale"))
-               .add (350,420, getButton ("Weiter"))
-               .print()
-           ,
-           getButton("Weiter").wait(
-            getScale("Skala1").test.selected()
-                   .failure( getText("errorscale").settings.visible())
-                    .and(
-                   getAudio("Audio").test.hasPlayed()
-                       .failure( getText("erroraudio").settings.visible ())))
-             )
-              .log ("Audio", row.Audio)
-              .log ("Group", row.Group)
-              .log ("item", row.item)
-              ); 
+        newScale("Skala1", 7)
+        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+        .settings.labelsPosition("bottom").color("white")
+            
+    .settings.before(newText("labelleft","<em><nobr>ich stimme</nobr> <nobr> vollkommen zu </nobr></em>"))
+    .settings.after(newText("labelright","<em><nobr>ich stimme</nobr> <nobr>überhaupt nicht zu</em></nobr>"))
+        .log ("all")
+        .center()
+        ,
+
+   newText ("counter", row.Anzahl)
+   .settings.css ("font-size", "18px")
+   .settings.css("")
+   ,
+   newButton("Weiter", "Weiter")
+    .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+   .settings.center()
+   ,
+   newCanvas ("Durchlauf", 1500,500)
+        .color ("white")
+       .add( 0, 0, getImage("Image"))
+       .add (350,0, getText ("counter"))
+       .add( 350, 50, getAudio("Audio"))
+       .add (350,100, getText ("Bewertung"))
+       .add (350,320, getScale ("Skala1"))
+       .add (450,390, getText ("erroraudio"))
+       .add (450,440, getText ("errorscale"))
+       .add (350,420, getButton ("Weiter"))
+       .print()
+   ,
+   getButton("Weiter").wait(
+    getScale("Skala1").test.selected()
+           .failure( getText("errorscale").settings.visible())
+            .and(
+           getAudio("Audio").test.hasPlayed()
+               .failure( getText("erroraudio").settings.visible ())))
+     )
+      .log ("Audio", row.Audio)
+      .log ("Group", row.Group)
+      .log ("item", row.item)
+      ); 
    // Aufmerksamkeitstest 1: Zelten 
 
    PennController ("AufmerksamkeitZelten",
@@ -513,73 +517,75 @@ getButton("Weiter").wait(
    
    PennController ("Studie2",
    
-           newText ("Anleitung", "<br>Klicke den Play-Button, um den  Satz anzuhören.</br> <br> </br>")
-           .settings.css ("font-size", "18px")
-           .center()
-           .unfold(2000)
-           ,
-   
-           newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
-                  .center()
-             ,
-          newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
-                  .center()
-                  .size(300,450)
-             ,
-             newText("Bewertung","<p><br> </br> <br><b>Schritt 2:</b> Bitte den angehörten Satz bewerten.</br> <br> Inwiefern stimmst du der folgenden Aussage zu? </br> </br> <nobr> <b> <br>Der Satz klingt wie etwas, das jemand so sagen würde. </b> </nobr> </br> </p>")
-             .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-              .center()
-            ,
-            newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+  
+   newText ("Anleitung", "<br>Klicke den Play-Button, um den  Satz anzuhören.</br> <br> </br>")
+   .settings.css ("font-size", "18px")
+   .center()
+   .unfold(2000)
+   ,
+
+   newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
+          .center()
+     ,
+  newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
+          .center()
+          .size(300,450)
+     ,
+     newText("Bewertung","<p><br> </br> <br>Bitte den angehörten Satz bewerten.</br> <br> Inwiefern stimmst du der folgenden Aussage zu? </br> </br> <nobr> <b> <br>Der Satz klingt wie etwas, das jemand so sagen würde. </b> </nobr> </br> </p>")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+      .center()
+    ,
+    newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+        .color("red") 
+        .center()
+        .hidden()
+    ,
+    newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
                 .color("red") 
                 .center()
-                .hidden()
-            ,
-            newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
-                        .color("red") 
-                        .center()
-                        .hidden ()
-                        ,
-                newScale("Skala1", 7)
-                .settings.css("font-family", "calibri").settings.css("font-size", "20px")
-                .settings.labelsPosition("bottom").color("white")
-                    
-            .settings.before(newText("labelleft","<em><nobr>ich stimme</nobr> <nobr> vollkommen zu </nobr></em>"))
-            .settings.after(newText("labelright","<em><nobr>ich stimme</nobr> <nobr>überhaupt nicht zu</em></nobr>"))
-                .log ("all")
-                .center()
+                .hidden ()
                 ,
-           newText ("counter", row.Anzahl)
-           .settings.css ("font-size", "18px")
-           .settings.css("")
-           ,
-           newButton("Weiter", "Weiter")
-            .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-           .settings.center()
-           ,
-           newCanvas ("Durchlauf2", 1500,500)
-             .color ("white")
-               .add( 0, 0, getImage("Image"))
-               .add (350,0, getText ("counter"))
-               .add( 350, 50, getAudio("Audio"))
-               .add (350,100, getText ("Bewertung"))
-               .add (350,300, getScale ("Skala1"))
-               .add (450,390, getText ("erroraudio"))
-               .add (450,440, getText ("errorscale"))
-               .add (350,420, getButton ("Weiter"))
-               .print()
-           ,
-           getButton("Weiter").wait(
-            getScale("Skala1").test.selected()
-                   .failure( getText("errorscale").settings.visible())
-                    .and(
-                   getAudio("Audio").test.hasPlayed()
-                       .failure( getText("erroraudio").settings.visible ())))
-             )
-              .log ("Audio", row.Audio)
-              .log ("Group", row.Group)
-              .log ("item", row.item)
-              ); 
+        newScale("Skala1", 7)
+        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+        .settings.labelsPosition("bottom").color("white")
+            
+    .settings.before(newText("labelleft","<em><nobr>ich stimme</nobr> <nobr> vollkommen zu </nobr></em>"))
+    .settings.after(newText("labelright","<em><nobr>ich stimme</nobr> <nobr>überhaupt nicht zu</em></nobr>"))
+        .log ("all")
+        .center()
+        ,
+
+   newText ("counter", row.Anzahl)
+   .settings.css ("font-size", "18px")
+   .settings.css("")
+   ,
+   newButton("Weiter", "Weiter")
+    .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+   .settings.center()
+   ,
+   newCanvas ("Durchlauf", 1500,500)
+        .color ("white")
+       .add( 0, 0, getImage("Image"))
+       .add (350,0, getText ("counter"))
+       .add( 350, 50, getAudio("Audio"))
+       .add (350,100, getText ("Bewertung"))
+       .add (350,320, getScale ("Skala1"))
+       .add (450,390, getText ("erroraudio"))
+       .add (450,440, getText ("errorscale"))
+       .add (350,420, getButton ("Weiter"))
+       .print()
+   ,
+   getButton("Weiter").wait(
+    getScale("Skala1").test.selected()
+           .failure( getText("errorscale").settings.visible())
+            .and(
+           getAudio("Audio").test.hasPlayed()
+               .failure( getText("erroraudio").settings.visible ())))
+     )
+      .log ("Audio", row.Audio)
+      .log ("Group", row.Group)
+      .log ("item", row.item)
+      ); 
     // Aufmerksamkeitstest 2: Hotel 
    PennController ("AufmerksamkeitHotel",
        newText ("Frage", "<br>Bitte beantworte kurz die folgende Frage:</br> <br> </br>")
@@ -627,74 +633,75 @@ getButton("Weiter").wait(
    
    PennController ("Studie3",
    
-           newText ("Anleitung", "<br>Klicke den Play-Button, um den  Satz anzuhören.</br> <br> </br>")
-           .settings.css ("font-size", "18px")
-           .center()
-           .unfold(2000)
-           ,
-   
-           newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
-                  .center()
-             ,
-          newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
-                  .center()
-                  .size(300,450)
-             ,
-             newText("Bewertung","<p><br> </br> <br><b>Schritt 2:</b> Bitte den angehörten Satz bewerten.</br> <br> Inwiefern stimmst du der folgenden Aussage zu? </br> </br> <nobr> <b> <br>Der Satz klingt wie etwas, das jemand so sagen würde. </b> </nobr> </br> </p>")
-             .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-              .center()
-            ,
-            newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+ 
+   newText ("Anleitung", "<br>Klicke den Play-Button, um den  Satz anzuhören.</br> <br> </br>")
+   .settings.css ("font-size", "18px")
+   .center()
+   .unfold(2000)
+   ,
+
+   newAudio("Audio",row.Audio ) //nimmt sich aus der OG-audios Tabelle immer das nächste Audio 
+          .center()
+     ,
+  newImage("Image",row.Image) //nimmt sich aus der OG-audios Tabelle immer das nächste Bild 
+          .center()
+          .size(300,450)
+     ,
+     newText("Bewertung","<p><br> </br> <br>Bitte den angehörten Satz bewerten.</br> <br> Inwiefern stimmst du der folgenden Aussage zu? </br> </br> <nobr> <b> <br>Der Satz klingt wie etwas, das jemand so sagen würde. </b> </nobr> </br> </p>")
+     .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+      .center()
+    ,
+    newText ("errorscale", "Bitte Punkt auf der Skala wählen.")
+        .color("red") 
+        .center()
+        .hidden()
+    ,
+    newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
                 .color("red") 
                 .center()
-                .hidden()
-            ,
-            newText ("erroraudio", "Bitte höre dir die Audiodatei an, bevor du sie bewertest.")
-                        .color("red") 
-                        .center()
-                        .hidden ()
-                        ,
-                newScale("Skala1", 7)
-                .settings.css("font-family", "calibri").settings.css("font-size", "20px")
-                .settings.labelsPosition("bottom").color("white")
-                    
-            .settings.before(newText("labelleft","<em><nobr>ich stimme</nobr> <nobr> vollkommen zu </nobr></em>"))
-            .settings.after(newText("labelright","<em><nobr>ich stimme</nobr> <nobr>überhaupt nicht zu</em></nobr>"))
-                .log ("all")
-                .center()
+                .hidden ()
                 ,
-   
-           newText ("counter", row.Anzahl)
-           .settings.css ("font-size", "18px")
-           .settings.css("")
-           ,
-           newButton("Weiter", "Weiter")
-            .settings.css("font-family", "calibri").settings.css("font-size", "18px")
-           .settings.center()
-           ,
-           newCanvas ("Durchlauf3", 1500,500)
-            .color ("white")
-               .add( 0, 0, getImage("Image"))
-               .add (350,0, getText ("counter"))
-               .add( 350, 50, getAudio("Audio"))
-               .add (350,100, getText ("Bewertung"))
-               .add (350,300, getScale ("Skala1"))
-               .add (450,390, getText ("erroraudio"))
-               .add (450,440, getText ("errorscale"))
-               .add (350,420, getButton ("Weiter"))
-               .print()
-           ,
-           getButton("Weiter").wait(
-            getScale("Skala1").test.selected()
-                   .failure( getText("errorscale").settings.visible())
-                    .and(
-                   getAudio("Audio").test.hasPlayed()
-                       .failure( getText("erroraudio").settings.visible ())))
-             )
-              .log ("Audio", row.Audio)
-              .log ("Group", row.Group)
-              .log ("item", row.item)
-              ); 
+        newScale("Skala1", 7)
+        .settings.css("font-family", "calibri").settings.css("font-size", "20px")
+        .settings.labelsPosition("bottom").color("white")
+            
+    .settings.before(newText("labelleft","<em><nobr>ich stimme</nobr> <nobr> vollkommen zu </nobr></em>"))
+    .settings.after(newText("labelright","<em><nobr>ich stimme</nobr> <nobr>überhaupt nicht zu</em></nobr>"))
+        .log ("all")
+        .center()
+        ,
+
+   newText ("counter", row.Anzahl)
+   .settings.css ("font-size", "18px")
+   .settings.css("")
+   ,
+   newButton("Weiter", "Weiter")
+    .settings.css("font-family", "calibri").settings.css("font-size", "18px")
+   .settings.center()
+   ,
+   newCanvas ("Durchlauf", 1500,500)
+        .color ("white")
+       .add( 0, 0, getImage("Image"))
+       .add (350,0, getText ("counter"))
+       .add( 350, 50, getAudio("Audio"))
+       .add (350,100, getText ("Bewertung"))
+       .add (350,320, getScale ("Skala1"))
+       .add (450,390, getText ("erroraudio"))
+       .add (450,440, getText ("errorscale"))
+       .add (350,420, getButton ("Weiter"))
+       .print()
+   ,
+   getButton("Weiter").wait(
+    getScale("Skala1").test.selected()
+           .failure( getText("errorscale").settings.visible())
+            .and(
+           getAudio("Audio").test.hasPlayed()
+               .failure( getText("erroraudio").settings.visible ())))
+     )
+      .log ("Audio", row.Audio)
+      .log ("Group", row.Group)
+      .log ("item", row.item)
+      ); 
     // Ende der Studie und Überleitung zum Fragebogen 
 
    PennController ("Ende",
@@ -743,18 +750,20 @@ getButton("Weiter").wait(
        .settings.hidden ()
        ))
         ,
-        newText("Geschlechtsidentität", "Welcher Geschlechtsidentität fühlst du dich zugehörig? &ensp; &ensp;")
-            .settings.css("font-size", "18px")
-            .settings.bold()
-            .center()
-            .settings.after (newDropDown("IdentityDrop", "Bitte auswählen")
+        newDropDown("IdentityDrop", "Bitte auswählen")
             .settings.add("Divers", "Weiblich", "Männlich")
             .settings.size (150,20)
-            .log().settings.after (newText ("errorIdentity", "&ensp; Bitte auswählen")
+            .log()
+            .settings.before (newText("Geschlechtsidentität", "Welcher Geschlechtsidentität fühlst du dich zugehörig? &ensp; &ensp;")
+            .settings.css("font-size", "18px")
+            .settings.bold()
+            .center())
+            .settings.after (newText ("errorIdentity", "&ensp; Bitte auswählen")
        .settings.css ("font-size", "14px")
        .color ("red")
        .settings.hidden ()
-       )),
+       )
+    ,
         newText("Wohnort", "Aktueller Wohnort &ensp; &ensp;")
             .settings.css("font-size", "18px")
             .settings.bold()
@@ -781,10 +790,6 @@ getButton("Weiter").wait(
        .color ("red")
        .settings.hidden ()
        )),
- 
-        
-        
-   
         newText("AndereOrte", "<br><b>Falls zutreffend, gib bitte vorherige Wohnorte an. Welche Lebensjahre hast du dort verbracht? </br> </b> <small> Bitte Land, Stadt angeben. </small> </br>")
             .settings.css("font-size", "18px")
             .center()
@@ -825,10 +830,10 @@ getButton("Weiter").wait(
         .settings.size (270,20)
         .log(),
         newText ("VonA", "<b>Alter beim Hinzug </b> </br> <small>z.B. 5 &#040;Jahre&#041; </small>")
-        .settings.css("font-size", "18px")
+        .settings.css("font-size", "16px")
             .center(),
         newText ("BisA", "<b>Alter beim Wegzug</b> </br> <small> z.B. 12 &#040;Jahre&#041;</small>")
-        .settings.css("font-size", "18px")
+        .settings.css("font-size", "16px")
             .center(),
         newTextInput ("AlterAAIn")
         .settings.size (100,20)
@@ -860,17 +865,18 @@ getButton("Weiter").wait(
          newTextInput ("AlterEBIn")
         .settings.size (100,20)
         .log(),
-        newText ("Bildung", "Höchster Bildungsabschluss &ensp; &ensp;")
-        .settings.css("font-size", "18px")
-            .settings.bold()
-            .settings.after (newDropDown("BildungDrop", "Bitte eine Option ausw&auml;hlen")
+        newDropDown("BildungDrop", "Bitte eine Option ausw&auml;hlen")
         .settings.add("kein Abschluss","Schulabschluss","Abitur oder gleichwertiger Abschluss","Ausbildung","Studium ohne Abschluss","Bachelor","Master","Magister","Diplom", "Promotion", "Sonstige")
         .settings.size (340,20)
-        .log().settings.after (newText ("errorBildung", "&ensp;Bitte auswählen")
+        .log()
+        .settings.before (newText ("Bildung", "Höchster Bildungsabschluss &ensp; &ensp;")
+        .settings.css("font-size", "18px")
+            .settings.bold())
+        .settings.after (newText ("errorBildung", "&ensp;Bitte auswählen")
        .settings.css ("font-size", "14px")
        .color ("red")
-       .settings.hidden ()))
-         .center(),
+       .settings.hidden ())
+         ,
         
         newText ("Studium", "<b>Studierst du? </b> <small> Falls ja, welches Fach und welches Semester? </small> &ensp; ")
         .settings.css ("font-size", "18px")
@@ -882,7 +888,7 @@ getButton("Weiter").wait(
        .settings.hidden ())),
         newCanvas("Fragen1",1000,600)
             .settings.add(150,0, getText("Alter"))
-            .settings.add(150,50, getText("Geschlechtsidentität"))
+            .settings.add(150,50, getDropDown("IdentityDrop"))
             .settings.add(150,100, getText("Wohnort"))
             .settings.add(150,130, getText("SeitWohnort"))
             .settings.add(150,180, getText ("Geburtsort"))
@@ -909,15 +915,10 @@ getButton("Weiter").wait(
             .settings.add(780,420, getTextInput ("AlterDBIn"))
             .settings.add(620,450, getTextInput ("AlterEAIn"))
             .settings.add(780,450, getTextInput ("AlterEBIn"))
-            .settings.add(150,520, getText ("Bildung"))
+            .settings.add(150,520, getDropDown ("BildungDrop"))
             .settings.add(150,560, getText ("Studium"))
         .center()
         .print()
-        ,
-        getDropDown ("IdentityDrop")
-        .settings.callback(getDropDown ("IdentityDrop")
-        .test.selected ("Divers")
-        .success (getTextInput ("IdentityIn").settings.visible()))
         ,
         newButton ("Weiter", "Weiter")
         .center()
@@ -927,29 +928,26 @@ getButton("Weiter").wait(
        .print()
        ,
        getButton ("Weiter")
-       .wait(
-                newFunction('dummy', ()=>true).test.is(true)
-                .and( getDropDown("BildungDrop").test.selected()
-                .failure (getText ("errorBildung").settings.visible()))
-                .and( getDropDown("IdentityDrop").test.selected()
-                .failure (getText ("errorIdentity").settings.visible()))
-                .and( getTextInput("AlterIn").test.text(/^.+/)
-                .failure (getText ("errorAlter").settings.visible())) 
-                .and( getTextInput("WohnortIn").test.text(/^.+/)
-                .failure (getText ("errorWohnort").settings.visible())) 
-                .and( getTextInput("SeitWohnortIn").test.text(/^.+/)
-                .failure (getText ("errorSeitWann").settings.visible())) 
-                .and( getTextInput("GeburtIn").test.text(/^.+/)
-                .failure (getText ("errorGeburt").settings.visible())) 
-                .and( getTextInput("StudiumIn").test.text(/^.+/)
-                .failure (getText ("errorStudium").settings.visible())) 
-                )
-        ,
+    .wait(newFunction('dummy', ()=>true).test.is(true)
+    .and(getTextInput ("AlterIn").test.text(/^.+/)
+    .failure (getText ("errorAlter").settings.visible()))
+    .and (getDropDown ("BildungDrop").test.selected()
+    .failure (getText ("errorBildung").settings.visible()))
+    .and (getDropDown ("IdentityDrop").test.selected()
+    .failure (getText ("errorIdentity").settings.visible()))
+    .and(getTextInput ("WohnortIn").test.text(/^.+/)
+    .failure (getText ("errorWohnort").settings.visible()))
+    .and(getTextInput ("SeitWohnortIn").test.text(/^.+/)
+    .failure (getText ("errorSeitWann").settings.visible()))
+    .and(getTextInput ("GeburtIn").test.text(/^.+/)
+    .failure (getText ("errorGeburt").settings.visible()))
+    .and(getTextInput ("StudiumIn").test.text(/^.+/)
+    .failure (getText ("errorStudium").settings.visible()))
+    )
+      ,
                     getDropDown("IdentityDrop").wait("first")
                    ,
                    getDropDown("BildungDrop").wait("first")
-                   ,
-                    getDropDown("StudiumDrop").wait("first")             
                    
                 ); 
      //Metadaten 2: Sprachbiographie
@@ -1704,9 +1702,8 @@ getButton("Weiter").wait(
 //Geloggte Ergebnisse senden
 PennController.SendResults("send");
 
-//Abschlussbildschirm
 PennController("Final",
-         newText("<p align=center><b>Vielen Dank f&uuml;r deine Teilnahme!</b> </br> <br> Die Studie ist hiermit beendet.</br> <br> Du kannst das Fenster jetzt schließen. </br> </p>")
+         newText("<p align=center><b>Vielen Dank f&uuml;r deine Teilnahme!</b> </br> <br> Die Studie ist hiermit beendet.</br> <br> Du kannst das Fenster jetzt schließen. </br>  </p>")
             .settings.css("font-family","times new roman") .settings.css("font-size", "18px")
             .settings.center()
             .print()
@@ -1716,6 +1713,4 @@ PennController("Final",
 
 
    );
-;
-
 
