@@ -13,13 +13,10 @@ PennController.Sequence("Info",
                         "EinleitungStudie",
                         "Studie",
                         "AufmerksamkeitZelten",
-                        "send",
                         "Studie2",
                         "AufmerksamkeitHotel",
-                        "send",
                         "Studie3",
                         "Ende",
-                        "send",
                         "Meta-Fragen1","Meta2", "Meta3", "Feedback","send","Final");
 PennController.DebugOff();
 var progressBarText = "Fortschritt";
@@ -1451,16 +1448,15 @@ getButton("Weiter").wait(
       .center()
       .print()
       ,
-     newTextInput ("DialektIn")
-     .size (290,20)
-     .settings.before (newText ("Dialekt", "<b>Bist du mit einem Dialekt vertraut? &ensp; </b> </br> <small> Wenn ja, welcher?</small> &ensp; "))
-     .settings.after (newText ("errorDialekt", "<small> &ensp; Bitte ausfüllen</small>")
-     .color ("red")
-     .settings.hidden ())
-     .settings.css ("font-size", "18px")
-     .center()
-     .log()
-     ,
+      newTextInput ("DialektIn")
+      .size (290,20)
+      .settings.before (newText ("Dialekt", "<b>Bist du mit einem Dialekt vertraut? &ensp; </b> </br> <small> Wenn ja, welcher?</small> &ensp; ").settings.css ("font-size", "18px"))
+      .settings.after (newText ("errorDialekt", "<small> &ensp; Bitte ausfüllen</small>")
+      .color ("red")
+      .settings.hidden ())
+      .center()
+      .log()
+      ,
      newTextInput ("EmailIn")
      .size (290,20)
      .settings.before ( newText("Email","<b>Dürfen wir dich in Zukunft erneut kontaktieren? &ensp; </b><br> <small>Wenn ja, bitte Emailadresse angeben. &ensp; ")
