@@ -17,7 +17,7 @@ PennController.Sequence("Info",
                         "AufmerksamkeitHotel",
                         "Studie3",
                         "Ende",
-                        "Meta-Fragen1","Meta2", "Meta3", "Feedback","send","Final");
+                        "Meta-Fragen1","Meta2", "Meta3", "Feedback","Aufwand","send","Final");
 PennController.DebugOff();
 var progressBarText = "Fortschritt";
 
