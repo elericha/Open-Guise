@@ -1464,9 +1464,9 @@ getButton("Weiter").wait(
      .center())
      .log()
      ,
-    newText ("Freiwillig", "<p>Die Angabe der Kontaktdaten ist freiwillig. </br> Um Anonymität zu gewährleisten, wird diese Angabe getrennt vom ausgefüllten Fragebogen archiviert.</p>")
- .center()
- .settings.css ("font-size", "14px")
+     newText ("Freiwillig", "<p>Die Angabe der Kontaktdaten ist freiwillig. </br> Um Anonymität zu gewährleisten, wird diese Angabe getrennt vom ausgefüllten Fragebogen archiviert. </p> <p> Für die Aufwandsentschädigung kannst du deine Emailadresse an einer anderen Stelle eingeben. Hier geht es nur um zukünftige Studien. </p>")
+     .center()
+     .settings.css ("font-size", "14px")
  ,
      newCanvas ("DialektEmail", 1000, 230)
      .settings.add (150,0, getTextInput ("DialektIn"))
@@ -1694,6 +1694,54 @@ getButton("Weiter").wait(
         .failure (getText ("errorFragestellung").settings.visible()))
         ) 
         ); 
+
+    //Email für Aufwandsentschädigung
+
+        PennController ("Aufwand",
+        newImage("HU","HU-Logo.jpeg")  
+                  .size(90,90)
+               ,
+              newImage("RUEG","dfg_rueg_header.jpg")
+                  .size(294,90)
+                 , 
+              newImage ("DFG", "DFG-logo.jpeg")
+                  .size (159,90)
+              ,
+               newCanvas("Logosnebeneinander",1138,140) //bildet den Header mit Logos
+                  .add(240,10, getImage("HU"))
+                  .add(380,10, getImage("RUEG"))
+                  .add(720,15, getImage("DFG"))
+                  .color ("white")
+                  .center()
+                  .print()
+                  ,   
+              newText("Leerzeile"," <br></p>")
+              .center()
+              .print() 
+      ,
+      
+             newText("Aufwand","Wenn du eine Aufwandsentschädigung erhalten möchtest, gib bitte deine Emailadresse an. Wir werden dich dann nur für die Abwicklung der Aufwandsentschädigung kontaktieren. </br> <br> </br> ")
+           
+              .print()
+             ,
+             newText ("Email", "<b>Emailadresse &ensp;</b>")
+             .settings.after (newTextInput ("EmailIn").log())
+           
+             .print()
+     ,
+     newButton ("Weiter", "Weiter")
+     .center()
+     ,
+     newCanvas ("Button", 1000,70) 
+     .settings.add (450, 25, getButton ("Weiter"))
+     .center()
+     .print()
+     ,
+     
+     getButton ("Weiter")
+     .wait()
+     
+     ) ;     
        
 //Geloggte Ergebnisse senden
 PennController.SendResults("send");
